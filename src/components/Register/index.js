@@ -1,10 +1,18 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Register = (props) => {
     const {swap} = props;
     return (
         <>
             <div className="register-container" id="register">
                 <div className="top">
-                    <span>Have an account? <a href="#" onClick={swap}>Login</a></span>
+                    <span>Have an account? 
+                        <div className="login-button" style={{cursor: "pointer"}}
+                        >   
+                            <Link to="/member">
+                                Login
+                            </Link>
+                        </div></span>
                     <header>Sign Up</header>
                 </div>
                 <div className="two-forms">
@@ -34,7 +42,7 @@ const Register = (props) => {
                         <label htmlFor="register-check"> Remember Me</label>
                     </div>
                     <div className="two">
-                        <label><a href="#">Terms & conditions</a></label>
+                        <label><div href="#">Terms & conditions</div></label>
                     </div>
                 </div>
             </div>

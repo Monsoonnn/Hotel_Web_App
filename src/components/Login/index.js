@@ -1,10 +1,16 @@
+import { NavLink } from "react-router-dom";
+
 const Login = (props) => {
-    const {swap} = props;
     return (
         <>
             <div className="login-container" id="login">
                 <div className="top">
-                    <span>Don't have an account? <a href="#" onClick={swap}>Sign Up</a></span>
+                    <span>Don't have an account? 
+                        <div className="sign-up-button" style={{cursor: "pointer"}}>
+                            <NavLink to="/member/sign-up">
+                                Sign Up
+                            </NavLink>
+                        </div></span>
                     <header>Login</header>
                 </div>
                 <div className="input-box">
@@ -24,7 +30,7 @@ const Login = (props) => {
                         <label htmlFor="login-check"> Remember Me</label>
                     </div>
                     <div className="two">
-                        <label><a href="#">Forgot password?</a></label>
+                        <label><div href="#">Forgot password?</div></label>
                     </div>
                 </div>
             </div>

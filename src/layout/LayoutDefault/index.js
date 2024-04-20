@@ -5,11 +5,15 @@ import "./LayoutHome.css"
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import HeaderAll from "../../components/HeaderAll";
 
 
 const LayoutDefault = () => {
   return (
     <>
+
+      <HeaderAll/>
+      
       <Header />
 
       <Outlet />

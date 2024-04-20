@@ -12,7 +12,9 @@ const Header = () => {
 
     return (
         <>
-            <header className="header">
+            <header className="header" style={{
+                marginTop: "40px"
+            }}>
                 {/* <h1 className="header__logo">
           <Link to="/">Logo</Link>
         </h1> */}

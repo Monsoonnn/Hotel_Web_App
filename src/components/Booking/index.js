@@ -5,10 +5,12 @@ import "./booking.css"
 import { Button, Form, Input, Radio } from 'antd';
 import { DatePicker, Space, Row, Col, InputNumber, AutoComplete } from 'antd';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const { RangePicker } = DatePicker;
 
 const onFinish = (values) => {
+    <Link to={"rever"}/>
     console.log('Success:', values);
 };
 const onFinishFailed = (errorInfo) => {
@@ -57,9 +59,6 @@ const options = [
     {
         value: 'Khách sạn Đà Nẵng',
     },
-    {
-        value: 'Khách sạn Huế',
-    },
 ];
 
 const Booking = () => {
@@ -95,12 +94,16 @@ const Booking = () => {
                             style={{
                                 backgroundColor: "#fff",
                                 marginBottom: "0px",
-                                padding: "20px 10px"
+                                padding: "20px 10px",
+                               
                             }}
 
                         >
                             <AutoComplete
                                 options={options}
+                                style={{
+                                    maxWidth: "200px",
+                                }}
                                 placeholder="Nhập địa điểm"
                                 filterOption={(inputValue, option) =>
                                     option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
@@ -197,7 +200,7 @@ const Booking = () => {
                             style={{
                                 backgroundColor: "#fff",
                                 marginBottom: "0px",
-                                padding: "20px 0px"
+                                padding: "20px 10px"
                             }}
 
                         >
@@ -215,7 +218,7 @@ const Booking = () => {
 
                         >
                             <Input placeholder="Mã khuyến mãi"  style={{
-                                    
+                                      maxWidth: "200px",
                             }}/>
                         </FormItem>
                         <Form.Item
