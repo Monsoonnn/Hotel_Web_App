@@ -1,0 +1,26 @@
+.question{
+    padding: 40px;
+    max-width: 900px;
+    min-width: 320px;
+    margin: 60px auto  ;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+.question__about{
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.question__bookingID{
+    margin-bottom: 20px;
+}
+.question__link a{
+    color: #998465;
+    font-size: 15px;
+    margin-bottom: 50px;
+}
+.findReservation{
+    max-width: 1200px;
+    min-width: 320px;
+    margin: 0px auto  ;
+}

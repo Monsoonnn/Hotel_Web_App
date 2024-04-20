@@ -22,7 +22,7 @@ const Header = () => {
                     <ul className="header__menu">
                         <li className="header__booking">
                             <FaMagnifyingGlass />
-                            <NavLink to="/"
+                            <NavLink
                                 style={() => {
                                     return {
                                         paddingLeft: 10,

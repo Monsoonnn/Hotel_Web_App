@@ -1,15 +1,31 @@
 
-.mySwiper{
-    height: 100vh;
+.hoteloffers{
+    padding: 200px 0;
+    padding-bottom: 80px;
+  }
+  .hoteloffers__title{
+    font-size: 40px;
+    color: black;
+    padding: 0 0 65px;
+    text-align: center;
+  }
+  .aa{
+    font-size: 20px;
+    color: black;
+    padding: 0 0 6px;
+    text-align: center;
+  }
+  
+.SlidePack{
+    height: 30rem;
 }
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
-    
     /* Center slide text vertically */
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
   }
@@ -20,9 +36,9 @@
     height: 100%;
     object-fit: cover;
   }
-.mySwiper .swiper-button-prev, .mySwiper .swiper-button-next{
+.SlidePack .swiper-button-prev, .SlidePack .swiper-button-next{
     color: #fff;
-    opacity: 0.7;
+    opacity: 0;
 }
 .bg-1{
     position: absolute;

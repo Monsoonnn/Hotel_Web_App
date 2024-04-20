@@ -1,17 +1,21 @@
 
 import { Outlet } from "react-router-dom";
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-const LayoutReservation = () =>{
+import HeaderAll from "../../components/HeaderAll";
+const LayoutReservation = () => {
 
-    return(
+    return (
         <>
 
-            Phía trên này là header cho đặt phòng
+            <HeaderAll />
 
-            <Outlet/>
+            <Header />
+
+            <Outlet />
 
             <Footer />
-            
+
         </>
     )
 

@@ -9,6 +9,7 @@ import LayoutReservation from "../layout/LayoutReservation";
 import Register from "../components/Register";
 import Login from "../components/Login";
 import Reservation from "../pages/Reservation";
+import WeddingConference from "../components/Weddingconference";
 
 
 
@@ -20,6 +21,14 @@ export const routes = [
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: "hotel-offers",
+        element: <SlidePack/>
+      },
+      {
+        path: "wedding-conference",
+        element: <WeddingConference/>
       },
     ]
   }, 
