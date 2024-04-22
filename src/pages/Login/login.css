@@ -108,11 +108,18 @@
 .top span a{
     font-weight: 500;
     color: #fff;
-    margin-left: 5px;
+    font-size: small;
+    margin-left: 15px;
 }
 .two-forms{
     display: flex;
     gap: 10px;
+}
+.top{
+    color:#fff;
+    text-align: center;
+    font-size: 29px;
+    font-weight: 500;
 }
 .input-field{
     font-size: 15px;
@@ -131,6 +138,9 @@
 }
 ::-webkit-input-placeholder{
     color: #fff;
+}
+.input-box{
+    padding: 7px;
 }
 .input-box i{
     position: relative;
@@ -165,6 +175,9 @@
 .two-col .one{
     display: flex;
     gap: 5px;
+}
+.two-col .three{
+    margin-left: 365px;;
 }
 .two label a{
     text-decoration: none;

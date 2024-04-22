@@ -10,7 +10,7 @@ import Register from "../components/Register";
 import Login from "../components/Login";
 import Reservation from "../pages/Reservation";
 import WeddingConference from "../components/Weddingconference";
-
+import ProfileTemplate from "../pages/ProfileTemplate";
 
 
 export const routes = [
@@ -48,8 +48,13 @@ export const routes = [
         path: "sign-up",
         element: <Register/>
       },
+      
     ]
   },
+  {
+    path: "profile",
+    element: <ProfileTemplate/>
+  }, 
   {
     path: "hotel-offers",
     element: <SlidePack/>
