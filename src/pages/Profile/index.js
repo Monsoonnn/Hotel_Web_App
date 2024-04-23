@@ -6,6 +6,7 @@ import InfoForm from '../../components/InfoForm';
 import SocialLinksForm from '../../components/SocialLinkForm';
 import ConnectionsForm from '../../components/ConnectionsForm';
 import NotificationsForm from '../../components/NotificationsForm';
+import { Link, Outlet } from 'react-router-dom';
 
 const ProfileTemplate = () => {
     return (
@@ -17,22 +18,17 @@ const ProfileTemplate = () => {
                 <div className="row no-gutters row-bordered row-border-light">
                     <div className="col-md-3 pt-0">
                         <div className="list-group list-group-flush account-settings-links">
-                            <a className="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">Tổng quan</a>
-                            <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Thay đổi mật khẩu</a>
-                            <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Thông tin</a>
-                            <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Liên kết mạng xã hội</a>
-                            <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">Kết nối</a>
-                            <a className="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Thông báo</a>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="">Tổng quan</Link>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-change-password">Thay đổi mật khẩu</Link>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-info">Thông tin</Link>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-social-links">Liên kết mạng xã hội</Link>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-connections">Kết nối</Link>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-notifications">Thông báo</Link>
                         </div>
                     </div>
                     <div className="col-md-9">
                         <div className="tab-content">
-                            <ProfileGeneral />
-                            <ChangePasswordForm />
-                            <InfoForm />
-                            <SocialLinksForm />
-                            <ConnectionsForm />
-                            <NotificationsForm />
+                            <Outlet/>
                         </div>
                     </div>
                 </div>

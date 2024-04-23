@@ -2,7 +2,7 @@ import React from 'react';
 
 const InfoForm = () => {
     return (
-        <div className="tab-pane fade" id="account-info">
+        <div className="" id="account-info">
             <div className="card-body pb-2">
                 <div className="form-group">
                     <label className="form-label">Bio</label>

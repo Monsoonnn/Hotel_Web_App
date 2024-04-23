@@ -10,7 +10,13 @@ import Register from "../components/Register";
 import Login from "../components/Login";
 import Reservation from "../pages/Reservation";
 import WeddingConference from "../components/Weddingconference";
-import ProfileTemplate from "../pages/ProfileTemplate";
+import ProfileTemplate from "../pages/Profile";
+import ProfileGeneral from "../components/ProfileGeneral";
+import ChangePasswordForm from "../components/ChangePasswordForm";
+import InfoForm from "../components/InfoForm";
+import SocialLinksForm from "../components/SocialLinkForm";
+import ConnectionsForm from "../components/ConnectionsForm";
+import NotificationsForm from "../components/NotificationsForm";
 
 
 export const routes = [
@@ -46,14 +52,39 @@ export const routes = [
       },
       {
         path: "sign-up",
-        element: <Register/>
+        element: <Register/>,
       },
-      
-    ]
+    ],
   },
   {
     path: "profile",
-    element: <ProfileTemplate/>
+    element: <ProfileTemplate/>,
+    children: [
+      {
+        index: true,
+        element: <ProfileGeneral/>,
+      },
+      {
+        path: "account-change-password",
+        element: <ChangePasswordForm/>,
+      },
+      {
+        path: "account-info",
+        element: <InfoForm/>,
+      },
+      {
+        path: "account-social-links",
+        element: <SocialLinksForm/>,
+      },
+      {
+        path: "account-connections",
+        element: <ConnectionsForm/>,
+      },
+      {
+        path: "account-notifications",
+        element: <NotificationsForm/>,
+      },
+    ],
   }, 
   {
     path: "hotel-offers",

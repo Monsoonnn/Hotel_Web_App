@@ -2,7 +2,7 @@ import React from 'react';
 
 const ChangePasswordForm = () => {
     return (
-        <div className="tab-pane fade" id="account-change-password">
+        <div className="" id="account-change-password">
             <div className="card-body pb-2">
                 <div className="form-group">
                     <label className="form-label">Current password</label>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const NotificationsForm = () => {
     return (
-        <div className="tab-pane fade" id="account-notifications">
+        <div className="" id="account-notifications">
             <div className="card-body pb-2">
                 <h6 className="mb-4">Hoạt động</h6>
                 <div className="form-group">

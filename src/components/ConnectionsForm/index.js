@@ -2,7 +2,7 @@ import React from 'react';
 
 const ConnectionsForm = () => {
     return (
-        <div className="tab-pane fade" id="account-connections">
+        <div className="" id="account-connections">
             <div className="card-body">
                 <button type="button" className="btn btn-twitter">Kết nối với <strong>Twitter</strong></button>
             </div>

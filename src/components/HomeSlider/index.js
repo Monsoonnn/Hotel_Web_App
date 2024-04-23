@@ -18,7 +18,7 @@ const HomeSlider = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 loop={true}
                 autoplay={{
-                    delay: 2500,
+                    delay: 10000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -29,7 +29,6 @@ const HomeSlider = () => {
                     <img src={Slide_1} loading='lazy'>
                     </img>
                     <div className='container bg-1'>
-
                         <div className='sliderContent'>
                             <div className='sliderTitle'>
                                 Local Stitch Creator Town Seogyo
@@ -45,10 +44,9 @@ const HomeSlider = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={Slide_2}>
+                    <img src={Slide_2} loading='lazy'>
                     </img>
                     <div className='container bg-1'>
-
                         <div className='sliderContent'>
                             <div className='sliderTitle'>
                                 LOTTE HOTEL REWARDS

@@ -12,7 +12,7 @@ const RoomPackages = () => {
                 <div className="container">
                     <div className="row">
                         <div className="packages__title col-xxl-12">
-                            Room Packages & Offers
+                            Gói phòng và ưu đãi
                         </div>
                         <div className="packages__item col-xxl-4 col-xl-4 col-lg-6 col-md-12">
                             <div className="item__img">
@@ -27,7 +27,7 @@ const RoomPackages = () => {
                             <button>
                                 <Link to="/Spring">
                                     <span>
-                                    GO TO OFFTER
+                                    ĐẶT DỊCH VỤ
                                     </span>
                                 </Link>
                             </button>
@@ -46,7 +46,7 @@ const RoomPackages = () => {
                             <button>
                                 <Link to="/Spring">
                                     <span>
-                                    GO TO OFFTER
+                                    ĐẶT DỊCH VỤ
                                     </span>
                                 </Link>
                             </button>
@@ -56,16 +56,15 @@ const RoomPackages = () => {
                                 <img src={reward} />
                             </div>
                             <div className="item__title">
-                                LOTTE HOTEL
-                                REWARDS ONLY
+                                KHUYẾN MÃI THÀNH VIÊN 
                             </div>
                             <div className="item__desc">
-                                ìm phòng tại LOTTE HOTELS & RESORTS trên toàn thế giới với mức giá đặc biệt dành cho các thành viên
+                                Tìm phòng tại LOTTE HOTELS & RESORTS trên toàn thế giới với mức giá đặc biệt dành cho các thành viên
                             </div>
                             <button>
                                 <Link to="/Spring">
                                     <span>
-                                    GO TO OFFTER
+                                    ĐẶT DỊCH VỤ
                                     </span>
                                 </Link>
                             </button>

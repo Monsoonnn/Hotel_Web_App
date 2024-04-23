@@ -2,7 +2,7 @@ import React from 'react';
 
 const SocialLinksForm = () => {
     return (
-        <div className="tab-pane fade" id="account-social-links">
+        <div className="" id="account-social-links">
             <div className="card-body pb-2">
                 <div className="form-group">
                     <label className="form-label">Twitter</label>

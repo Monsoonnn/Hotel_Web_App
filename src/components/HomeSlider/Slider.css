@@ -1,6 +1,7 @@
 
 .mySwiper{
     height: 100vh;
+    position: relative;
 }
 
 .swiper-slide {
@@ -27,7 +28,6 @@
 .bg-1{
     position: absolute;
     color: #fff;
-    left: 250px;
     text-align: start;
     margin-top: 20px;
 }
