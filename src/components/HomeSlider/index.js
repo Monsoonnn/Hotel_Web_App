@@ -17,18 +17,18 @@ const HomeSlider = () => {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 loop={true}
-                autoplay={{
-                    delay: 10000,
-                    disableOnInteraction: false,
-                }}
+                // autoplay={{
+                //     delay: 10000,
+                //     disableOnInteraction: false,
+                // }}
                 pagination={{
                     clickable: true,
                 }}
                 className="mySwiper">
                 <SwiperSlide>
-                    <img src={Slide_1} loading='lazy'>
+                    <img src={Slide_1}>
                     </img>
-                    <div className='container bg-1'>
+                    <div className='container bg-home-1'>
                         <div className='sliderContent'>
                             <div className='sliderTitle'>
                                 Local Stitch Creator Town Seogyo
@@ -44,9 +44,9 @@ const HomeSlider = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={Slide_2} loading='lazy'>
+                    <img src={Slide_2}>
                     </img>
-                    <div className='container bg-1'>
+                    <div className='container bg-home-1'>
                         <div className='sliderContent'>
                             <div className='sliderTitle'>
                                 LOTTE HOTEL REWARDS
