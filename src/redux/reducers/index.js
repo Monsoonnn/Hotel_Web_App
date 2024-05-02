@@ -1,8 +1,8 @@
 
-import { cartReducer } from "./cart";
+import { bookingReducer } from "./booking";
 import { combineReducers } from "redux";
 
 export const allReducer = combineReducers({
-    cartReducer,
+    bookingReducer,
     //Them cac reducer khac vao day
 });

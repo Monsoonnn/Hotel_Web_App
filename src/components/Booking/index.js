@@ -1,21 +1,14 @@
 
 import FormItem from "antd/es/form/FormItem";
 import "./booking.css"
-
+import { useDispatch } from "react-redux";
 import { Button, Form, Input, Radio } from 'antd';
 import { DatePicker, Space, Row, Col, InputNumber, AutoComplete } from 'antd';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { newBooking } from "../../redux/actions/cart";
 
 const { RangePicker } = DatePicker;
-
-const onFinish = (values) => {
-    <Link to={"rever"}/>
-    console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-};
 const layout = {
     name: "bookingForm",
     labelCol: {
@@ -62,7 +55,17 @@ const options = [
 ];
 
 const Booking = () => {
-
+    const dispatchBooking = useDispatch();
+    const navigate = useNavigate();
+    
+    const onFinish = (values) => {
+        navigate("booking")
+        console.log('Success:', values);
+        dispatchBooking(newBooking(values))
+    };
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
     return (
         <>
             <Row justify="center">
@@ -95,7 +98,7 @@ const Booking = () => {
                                 backgroundColor: "#fff",
                                 marginBottom: "0px",
                                 padding: "20px 10px",
-                               
+
                             }}
 
                         >
@@ -123,10 +126,10 @@ const Booking = () => {
                                 backgroundColor: "#fff",
                                 marginBottom: "0px",
                                 padding: "20px 10px"
-                               
+
                             }}
                         >
-                            <DatePicker renderExtraFooter={() => 'extra footer'} 
+                            <DatePicker renderExtraFooter={() => 'extra footer'}
                             />
                         </FormItem>
                         <FormItem
@@ -144,9 +147,9 @@ const Booking = () => {
                                 padding: "20px 10px"
                             }}
                         >
-                            <DatePicker renderExtraFooter={() => 'extra footer'}  style={{
-                        
-                                }}/>
+                            <DatePicker renderExtraFooter={() => 'extra footer'} style={{
+
+                            }} />
                         </FormItem>
                         <FormItem
                             label="Số lượng phòng"
@@ -165,8 +168,8 @@ const Booking = () => {
 
                         >
                             <InputNumber min={1} max={10} style={{
-                                    
-                                }}/>
+
+                            }} />
                         </FormItem>
                         <FormItem
                             label="Người lớn"
@@ -185,8 +188,8 @@ const Booking = () => {
 
                         >
                             <InputNumber min={1} max={10} style={{
-                               
-                            }}/>
+
+                            }} />
                         </FormItem>
                         <FormItem
                             label="Trẻ nhỏ"
@@ -205,8 +208,8 @@ const Booking = () => {
 
                         >
                             <InputNumber min={1} max={10} style={{
-                                   
-                                }}/>
+
+                            }} />
                         </FormItem>
                         <FormItem
                             label="Mã khuyến mãi"
@@ -217,9 +220,9 @@ const Booking = () => {
                             }}
 
                         >
-                            <Input placeholder="Mã khuyến mãi"  style={{
-                                      maxWidth: "200px",
-                            }}/>
+                            <Input placeholder="Mã khuyến mãi" style={{
+                                maxWidth: "200px",
+                            }} />
                         </FormItem>
                         <Form.Item
                             wrapperCol={{
@@ -231,7 +234,7 @@ const Booking = () => {
                                     offset: 0,
                                     span: 24,
                                 },
-                                
+
                             }}
                         >
                             <Button type="primary" htmlType="submit"
@@ -240,7 +243,7 @@ const Booking = () => {
                                     minWidth: 320,
                                 }}
                             >
-                               Tìm kiếm
+                                Tìm kiếm
                             </Button>
                         </Form.Item>
                     </Form>

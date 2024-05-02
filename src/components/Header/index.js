@@ -31,10 +31,10 @@ const Header = () => {
                                     };
                                 }}
                                 onClick={handeOnclick}
-                            >BOOK</NavLink>
+                            >ĐẶT PHÒNG</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/restaurant">DINING</NavLink>
+                            <NavLink to="/news">TIN TỨC</NavLink>
                         </li>
                         <li>
                             <NavLink to="/hotel-offers">ƯU ĐÃI</NavLink>

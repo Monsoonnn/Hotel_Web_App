@@ -1,0 +1,73 @@
+.RoomImg img{
+    width: 100%;
+    object-fit:  cover;
+}
+.RoomImg{
+    aspect-ratio: 2/1;
+}
+.RoomInfo{
+    padding: 30px 0px;
+    padding-left: 20px;
+}
+.RoomDesc{
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.RoomBeed{
+    font-size: 20px;
+}
+.Room__packages{
+    margin: 50px 0px;
+    position: relative;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.packages__rateOff{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+}
+.packages__rateOff p {
+    padding: 10px;
+    background-color: #AD9E87;
+    color: white;
+}
+.package__Room__name{
+    font-size: 24px;
+    font-weight: 600px;
+
+}
+.package__Room {
+    padding-left: 30px;
+}
+.packages__Room__desc{
+    font-size: 18px;
+}
+.packages__Room__button-price{
+    position: absolute;
+    right: 30px;
+    bottom: -20px;
+    padding: 8px 25px;
+    background-color: #AD9E87;
+    color: white;
+    cursor: pointer;
+}
+.ListRoom__Room{
+    display: flex;
+    flex-wrap: wrap;
+}
+@media (max-width: 575.98px){
+    .package__Room__name{
+        font-size: 18px;
+        font-weight: 600px;
+    }
+    .packages__Room__desc{
+        font-size: 12px;
+    }
+    .RoomInfo{
+        padding-left: 0px;
+    }
+}

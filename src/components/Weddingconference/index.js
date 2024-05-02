@@ -32,7 +32,7 @@ const WeddingConference = () => {
                                 Vì qúy vị là người đẹp nhất, chúng tôi đã chuẩn bị mọi thứ cho những khoảnh khắc hạnh phúc nhất của quý vị. Các chuyên viên tư vấn đặc biệt sẽ tiến hành các công đoạn chuẩn bị hoàn hảo cho lễ cưới của quý vị từ lễ cưới sang trọng theo truyền thống và phong cách tới lễ cưới hiện đại và tinh tế.
                             </div>
                             <button>
-                                <Link to="/Weddingp">
+                                <Link to="/weddingp">
                                     <span>
                                         Xem chi tiết
                                     </span>
@@ -40,7 +40,7 @@ const WeddingConference = () => {
                             </button>
                         </div>
                         <div className="conference col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Conferencep">
+                            <Link to="/conferencep">
                                 <div className="item__img">
                                     <img src={Conferencep} />
                                 </div>

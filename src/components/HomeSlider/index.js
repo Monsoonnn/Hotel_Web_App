@@ -17,10 +17,10 @@ const HomeSlider = () => {
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
                 loop={true}
-                // autoplay={{
-                //     delay: 10000,
-                //     disableOnInteraction: false,
-                // }}
+                autoplay={{
+                    delay: 20000,
+                    disableOnInteraction: false,
+                }}
                 pagination={{
                     clickable: true,
                 }}

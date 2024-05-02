@@ -17,7 +17,14 @@ import InfoForm from "../components/InfoForm";
 import SocialLinksForm from "../components/SocialLinkForm";
 import ConnectionsForm from "../components/ConnectionsForm";
 import NotificationsForm from "../components/NotificationsForm";
+import LayoutBooking from "../layout/LayoutBooking";
+import SearchHotel from "../pages/SearchHotel";
+import Ctwedding from "../components/Ctwedding";
+import Ctconference from "../components/Ctconference";
 
+import Jobs from "../pages/Jobs";
+
+import Careers from "../pages/Careers";
 
 export const routes = [
   {
@@ -35,6 +42,22 @@ export const routes = [
       {
         path: "wedding-conference",
         element: <WeddingConference/>
+      },
+      {
+        path: "weddingp",
+        element: <Ctwedding/>,
+      },
+      {
+        path: "conferencep",
+        element: <Ctconference/>,
+      },
+      {
+        path: "Jobs",
+        element: <Jobs/>
+      },
+      {
+        path: "Careers",
+        element: <Careers/>
       },
     ]
   }, 
@@ -91,7 +114,7 @@ export const routes = [
     element: <SlidePack/>
   },
   {
-    path: "/reservation",
+    path: "reservation",
     element: <LayoutReservation />,
     children: [
       {
@@ -100,5 +123,15 @@ export const routes = [
       },
     ]
   },
+  {
+    path: "booking",
+    element: <LayoutBooking/>,
+    children: [
+      {
+        index: true,
+        element: <SearchHotel/>
+      },
+    ]
+  }
 ];
 

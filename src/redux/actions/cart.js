@@ -1,15 +1,15 @@
-export const addItem = (id) =>{
+export const newBooking = (data) =>{
+    console.log(data.checkIn.$d);
     return{
-        type: "ADD_ITEM",
-        id: id
+        type: "NEW_BOOKING",
+        data: data,
     };
 }
 
-export const updateQuantityItem = (id,number) =>{
+export const addPackages = (data) =>{
     return{
-        type: "UPDATE_ITEM",
-        id: id,
-        number: number
+        type: "ADD_PACKAGES",
+        data: data,
     };
 }
 export const deleteItem = (id) =>{

@@ -1,5 +1,5 @@
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/images/gnb_logo_hotelsresorts.png"
 import "./globalHeader.css"
 import { Col, Flex, Row } from 'antd';
@@ -11,7 +11,9 @@ const HeaderAll = () => {
             <div className="globalHeader" style={{ position: "fixed", padding: "0px 10px", paddingBottom: "0px", zIndex: "999", width: "100%", backgroundColor: "#fff"}}>
                 <Row wrap={false} >
                     <Col lg={3} flex={1}>
+                        <Link to="/">
                         <img src={Logo} />
+                        </Link>
                     </Col>
                     <Col lg={21}
                     >
