@@ -4,9 +4,10 @@ import "./booking.css"
 import { useDispatch } from "react-redux";
 import { Button, Form, Input, Radio } from 'antd';
 import { DatePicker, Space, Row, Col, InputNumber, AutoComplete } from 'antd';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { newBooking } from "../../redux/actions/cart";
+import { newBooking } from "../../redux/actions/booking";
+import { get } from "../../utils/request";
 
 const { RangePicker } = DatePicker;
 const layout = {
@@ -40,32 +41,40 @@ const layout = {
         }
     },
 };
+const mockVal = (str, repeat = 1) => ({
+    value: str.repeat(repeat),
+  });
 
-
-const options = [
-    {
-        value: 'Khách sạn Hà Nội',
-    },
-    {
-        value: 'Khách sạn Sài gòn',
-    },
-    {
-        value: 'Khách sạn Đà Nẵng',
-    },
-];
 
 const Booking = () => {
     const dispatchBooking = useDispatch();
     const navigate = useNavigate();
-    
+
+    const [listhotels, setlisthotels] = useState([])
+    const [options, setOptions] = useState([])
+
     const onFinish = (values) => {
-        navigate("booking")
+        var hotel = listhotels.find((item) => { return item.name === values.hotel});
+        values.hotel = hotel._id;
+        navigate("booking");
         console.log('Success:', values);
         dispatchBooking(newBooking(values))
     };
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    
+    useEffect(() => {
+        const fetchAPI = async () =>{
+            const result = await get("/hotels");
+            setlisthotels(result.data.hotels);
+            setOptions(result.data.hotels.map((item) => ({ value: `${item.name}` })))
+        }
+        fetchAPI()
+    },[])
+
+    // console.log(listhotels);
     return (
         <>
             <Row justify="center">
@@ -103,13 +112,13 @@ const Booking = () => {
 
                         >
                             <AutoComplete
-                                options={options}
+                                options= {options}
                                 style={{
-                                    maxWidth: "200px",
+                                    maxWidth: "320px",
                                 }}
                                 placeholder="Nhập địa điểm"
-                                filterOption={(inputValue, option) =>
-                                    option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
+                                filterOption={(inputValue, options) =>
+                                    options.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                 }
                             />
                         </FormItem>
@@ -126,7 +135,7 @@ const Booking = () => {
                                 backgroundColor: "#fff",
                                 marginBottom: "0px",
                                 padding: "20px 10px"
-
+                                
                             }}
                         >
                             <DatePicker renderExtraFooter={() => 'extra footer'}
@@ -167,7 +176,7 @@ const Booking = () => {
                             }}
 
                         >
-                            <InputNumber min={1} max={10} style={{
+                            <InputNumber min={1} max={2} style={{
 
                             }} />
                         </FormItem>
@@ -187,7 +196,7 @@ const Booking = () => {
                             }}
 
                         >
-                            <InputNumber min={1} max={10} style={{
+                            <InputNumber min={1} max={2} style={{
 
                             }} />
                         </FormItem>
@@ -207,7 +216,7 @@ const Booking = () => {
                             }}
 
                         >
-                            <InputNumber min={1} max={10} style={{
+                            <InputNumber min={1} max={2} style={{
 
                             }} />
                         </FormItem>

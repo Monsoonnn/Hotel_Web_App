@@ -2,7 +2,7 @@
 import "./Rooms.css"
 import Room from "./Rooms";
 const HotelRooms = () => {
-
+    
     return (
         <>
             <div className="ListRoom col-sm-12">

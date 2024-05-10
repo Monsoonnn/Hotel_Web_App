@@ -1,5 +1,4 @@
 export const newBooking = (data) =>{
-    console.log(data.checkIn.$d);
     return{
         type: "NEW_BOOKING",
         data: data,
@@ -7,19 +6,21 @@ export const newBooking = (data) =>{
 }
 
 export const addPackages = (data) =>{
+    // console.log(data)
     return{
         type: "ADD_PACKAGES",
         data: data,
     };
 }
-export const deleteItem = (id) =>{
+export const addServies = (data) =>{
     return{
-        type: "DELETE_ITEM",
-        id: id
+        type: "ADD_SERVICES",
+        data: data,
     };
 }
-export const deleteALL = (id) =>{
+export const deleteServie = (data) =>{
     return{
-        type: "DELETE_ALL",
+        type: "DELETE_SERVICES",
+        data: data,
     };
 }

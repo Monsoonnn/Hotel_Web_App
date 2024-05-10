@@ -1,18 +1,18 @@
 
+
 const initBooking = []
 
 export const bookingReducer = (state = initBooking, action) => {
-    var newState = {...state};
+    var newState = { ...state };
     switch (action.type) {
         case "NEW_BOOKING":
             newState = {
-                id: action.data.id,
                 hotel: action.data.hotel,
-                ci: action.data.checkIn.$d,
-                co: action.data.checkOut.$d,
-                Adult: action.data.numberAdult,
-                Child: action.data.numberChild,
-                Room: action.data.numberRoom,
+                ci: action.data.checkIn,
+                co: action.data.checkOut,
+                adult: action.data.numberAdult,
+                child: action.data.numberChild,
+                room: action.data.numberRoom,
                 offset: action.data.offset,
             };
             // console.log(newState)
@@ -22,16 +22,35 @@ export const bookingReducer = (state = initBooking, action) => {
                 ...newState,
                 roomID: action.data.roomID,
                 packageID: action.data.packageID,
+                packageName: action.data.packageName,
                 price: action.data.price,
             };
             console.log(newState)
             return newState
-        case "DELETE_ITEM":
-            return newState.filter(item => item.id !== action.id)
-        case "DELETE_ALL":
-            return []
+        case "ADD_SERVICES":
+            const hasServices = 'services' in newState;
+            
+            if (hasServices) {
+                const existingService = newState.services.find(service => {
+                    return JSON.stringify(service) === JSON.stringify(action.data);
+                  });
+                  
+                  if (!existingService) {
+                    newState.services = newState.services.concat([action.data]);
+                  }
+                
+            } else {
+                newState.services = [action.data];
+            }
+            console.log(newState)
+            return newState
+        case "DELETE_SERVICES":
+            newState.services = newState.services.filter(service => {
+                return JSON.stringify(service) !== JSON.stringify(action.data);
+              });
+            return newState
         default:
             return state;
     }
-    
+
 }

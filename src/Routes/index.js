@@ -25,6 +25,7 @@ import Ctconference from "../components/Ctconference";
 import Jobs from "../pages/Jobs";
 
 import Careers from "../pages/Careers";
+import Confirm from "../pages/Confirm";
 
 export const routes = [
   {
@@ -110,10 +111,6 @@ export const routes = [
     ],
   }, 
   {
-    path: "hotel-offers",
-    element: <SlidePack/>
-  },
-  {
     path: "reservation",
     element: <LayoutReservation />,
     children: [
@@ -131,6 +128,10 @@ export const routes = [
         index: true,
         element: <SearchHotel/>
       },
+      {
+        path: "confirm",
+        element: <Confirm/>
+      }
     ]
   }
 ];

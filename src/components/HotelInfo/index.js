@@ -1,14 +1,34 @@
+import { useEffect, useState } from "react";
 import { BsDashLg } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { get } from "../../utils/request";
 
 const HotelInfo = () => {
+    const book = useSelector(state => state.bookingReducer);
+    const [hotel, setHotel] = useState();
+
+    useEffect(() => {
+        const fetchAPI = async () =>{
+            if(book.length !== 0) {
+                const result = await get("/hotels/"+book.hotel);
+                setHotel(result.data.hotel)
+            }
+        }
+        fetchAPI()
+    },[])
+
+//    console.log(hotel)
+
     return (
         <>
-            <div className="hotelInfo col-sm-12">
+            {hotel && (
+                <div className="hotelInfo col-sm-12">
                 <div className="hotelName" style={{
                     fontSize: "32px",
                     fontWeight: "500",
+                    marginTop: "100px"
                 }}>
-                    Khách sạn LOTTE Sài Gòn
+                    {hotel.name}
                 </div>
                 <div className="hotelDesc" style={{
                     display: "flex",
@@ -17,7 +37,7 @@ const HotelInfo = () => {
                     <div className="hotelStar" style={{
                         paddingRight: "20px",
                     }}>
-                        5 sao
+                        {hotel.starLevel} sao
                     </div>
                     <BsDashLg style={{
                         marginTop: "5px",
@@ -26,17 +46,18 @@ const HotelInfo = () => {
                     <div className="hotelAddress" style={{
                         paddingRight: "20px",
                     }}>
-                        4A Đ. Tôn Đức Thắng, Bến Nghé, Quận 1, Thành phố Hồ Chí Minh, Việt Nam
+                        {hotel.address}
                     </div>
                     <BsDashLg style={{
                         marginTop: "5px",
                         transform: "rotate(90deg)",
                     }} />
-                    <div className="hotelPhone">
-                        +84-28-3823-3333
+                    <div className="hotelDesc">
+                        {hotel.description}
                     </div>
                 </div>
             </div>
+            )}
         </>
     )
 }

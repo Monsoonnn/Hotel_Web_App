@@ -34,13 +34,13 @@ const Header = () => {
                             >ĐẶT PHÒNG</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/news">TIN TỨC</NavLink>
+                            <Link to="/news">TIN TỨC</Link>
                         </li>
                         <li>
-                            <NavLink to="/hotel-offers">ƯU ĐÃI</NavLink>
+                            <Link to="/hotel-offers">ƯU ĐÃI</Link>
                         </li>
                         <li>
-                            <NavLink to="/wedding-conference">LỄ CƯỚI & HỘI NGHỊ</NavLink>
+                            <Link to="/wedding-conference">LỄ CƯỚI & HỘI NGHỊ</Link>
                         </li>
                     </ul>
                 </div>

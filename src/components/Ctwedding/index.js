@@ -194,7 +194,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC1} />
                         </div>
-                        <div clasName="pc__info">
+                        <div className="pc__info">
                             LOTTE Family Club
                             <div className="pc__info2">
                                 Nó được chuẩn bị sẵn sàng cho bạn nhớ ngày may mắn của bạn. Dịch vụ trung thực được thiết kế để làm hài lòng bạn. Một khi bạn trở thành một thành viên của LOTTE HOTEL Family Club, bạn sẽ có quyền truy cập vào các loại lợi ích và dịch vụ khách hàng mà có thể nhắc nhở bạn về những ngày may mắn của bạn.
@@ -206,7 +206,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC2} />
                         </div>
-                        <div clasName="pc__info">
+                        <div className="pc__info">
                             TRANG TRÍ BÀN
                             <div className="pc__info2">
                                 Các chuyên gia của chúng tôi sẽ trang trí bàn cưới như ước nguyện của bạn. Sự thanh lịch và tinh tế của họ sẽ là sự hỗ trợ đắc lực cho bạn. Họ sẽ giúp bạn tạo phong cách độc đáo của riêng bạn bỏ phòng tiệc và thời gian tổ chức lễ cưới.
@@ -218,7 +218,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC3} />
                         </div>
-                        <div clasName="pc__info">
+                        <div className="pc__info">
                             DỊCH VỤ LIMOUSINE
                             <div className="pc__info2">
                                 Một dịch vụ xe limousine sân bay sẽ được cung cấp cho các cô dâu và chú rể (với 300 khách trở lên). Hãy trải nghiệm dịch vụ VIP mà LOTTE HOTEL cung cấp độc quyền cho khách hàng đám cưới của chúng tôi.
@@ -231,7 +231,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC4} />
                         </div>
-                        <div clasName="pc__info">
+                        <div className="pc__info">
                             DỊCH VỤ THỬ ĐỒ ĂN
                             <div className="pc__info2">
                                 Một dịch vụ thử đồ ăn cho menu chọn được cung cấp cho khách hàng đặt tiệc cưới. Hãy trải nghiệm những thực đơn tốt nhất của LOTTE HOTEL cưới đó là chuẩn bị tốt cho khách mời đặc biệt.

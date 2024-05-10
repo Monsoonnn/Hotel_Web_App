@@ -25,7 +25,7 @@ import Discovery from "../../assets/images/ld.jpg";
 const SlidePack = () => {
     return (
         <>
-            <Header></Header>
+          
 
             <div className="hoteloffers">
                 <div className="container">

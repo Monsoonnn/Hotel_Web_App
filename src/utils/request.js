@@ -1,4 +1,4 @@
-const DOMAIN = "http://localhost:3002";
+const DOMAIN = "https://hotel-backend-2.onrender.com/api/v1";
 
 export const get =  async (api) => {
     const rensponse = await fetch(DOMAIN + api);

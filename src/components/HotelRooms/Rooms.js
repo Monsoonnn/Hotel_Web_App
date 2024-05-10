@@ -45,8 +45,8 @@ const Room = (props) => {
                             Loại giường: Một giường đôi
                         </div>
                     </div>
-                    <Packages room={room} packagesID={123}/>
-                    <Packages room={room} packagesID={324}/>
+                    <Packages room={room} packageID={123} packageName={"FLASH SALES - STUNNING HOLIDAY"}/>
+                    <Packages room={room} packageID={324} packageName={"FLASH SALES - STUNNING HOLIDAY"}/>
                 
             </div>
 
