@@ -24,3 +24,9 @@ export const deleteServie = (data) =>{
         data: data,
     };
 }
+export const confirmBooking = (totalPrice) =>{
+    return{
+        type: "CONFIRM",
+        totalPrice: totalPrice,
+    };
+}

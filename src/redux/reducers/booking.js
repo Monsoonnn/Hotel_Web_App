@@ -42,13 +42,19 @@ export const bookingReducer = (state = initBooking, action) => {
             } else {
                 newState.services = [action.data];
             }
-            console.log(newState)
+            // console.log(newState)
             return newState
         case "DELETE_SERVICES":
             newState.services = newState.services.filter(service => {
                 return JSON.stringify(service) !== JSON.stringify(action.data);
               });
             return newState
+        case "CONFIRM":
+            newState = {
+                ...newState,
+                totalPrice: action.totalPrice,
+            }
+            console.log(newState)
         default:
             return state;
     }

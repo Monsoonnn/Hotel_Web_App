@@ -15,6 +15,7 @@ const SearchHotel = () => {
             navigate("/")
         }
     },[])
+    
     return (
         <>
             <div className="booking" style={{

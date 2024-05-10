@@ -60,6 +60,10 @@ export const routes = [
         path: "Careers",
         element: <Careers/>
       },
+      {
+        path: "reservation",
+        element: <Reservation />
+      }
     ]
   }, 
   {
@@ -107,19 +111,9 @@ export const routes = [
       {
         path: "account-notifications",
         element: <NotificationsForm/>,
-      },
+      }
     ],
   }, 
-  {
-    path: "reservation",
-    element: <LayoutReservation />,
-    children: [
-      {
-        index: true,
-        element: <Reservation />
-      },
-    ]
-  },
   {
     path: "booking",
     element: <LayoutBooking/>,
