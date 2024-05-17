@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Sider from "../../components/Sider";
 
 
@@ -17,7 +18,7 @@ const LayoutManager = () => {
             <div className="right" style={{
                 width: "85%"
             }}>
-                Đây là phần bên phải cho các trang quản lí
+                <Outlet/>
             </div>
         </div>
 
