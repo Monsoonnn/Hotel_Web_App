@@ -43,55 +43,49 @@ const Ctconference = () => {
 
                     <div className="ht">
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/">
-                                <div className="ht__img">
-                                    <img src={tct1} />
-                                </div>
-                                <div className="ht_place">
-                                    Khách sạn Hà Nội
-                                </div>
-                                <div className="ht__title">
-                                    Crystal Ballroom
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={tct1} />
+                            </div>
+                            <div className="ht_place">
+                                Khách sạn Hà Nội
+                            </div>
+                            <div className="ht__title">
+                                Crystal Ballroom
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/">
-                                <div className="ht__img">
-                                    <img src={tct2} />
-                                </div>
-                                <div className="ht_place">
-                                    Khách sạn Hà Nội
-                                </div>
-                                <div className="ht__title">
-                                    Seminar Room
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={tct2} />
+                            </div>
+                            <div className="ht_place">
+                                Khách sạn Hà Nội
+                            </div>
+                            <div className="ht__title">
+                                Seminar Room
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/">
-                                <div className="ht__img">
-                                    <img src={tct3} />
-                                </div>
-                                <div className="ht_place">
-                                    Khách sạn Sài Gòn
-                                </div>
-                                <div className="ht__title">
-                                    Business Room
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={tct3} />
+                            </div>
+                            <div className="ht_place">
+                                Khách sạn Sài Gòn
+                            </div>
+                            <div className="ht__title">
+                                Business Room
+                            </div>
                         </div>
 
-                
+
                     </div>
 
                     <div className="ttll">
                         <div className="ttll__title">
                             THÔNG TIN LIÊN LẠC
                         </div>
-                        <div className="ttll__ct">
+                        <div className="ttll__ct" style={{ width: "100%" }}>
                             <div className="ttll__place">
                                 KHÁCH SẠN HÀ NỘI
                             </div>
@@ -101,55 +95,43 @@ const Ctconference = () => {
                             <div className="ttll__fax">
                                 FAX +84-2-3213-1782
                             </div>
-                            <Link to="/">
-                                <span>
-                                    Xem chi tiết
-                                </span>
-                            </Link>
+                        </div>
+                        <div className="ttll__ct" style={{ width: "100%" }}>
+                            <div className="ttll__place">
+                                KHÁCH SẠN  SÀI GÒN
+                            </div>
+                            <div className="ttll__number">
+                                TEL +84-55-922-1040
+                            </div>
+                            <div className="ttll__fax">
+                                FAX +84-2-3030-6000
+                            </div>
+                        </div>
+
+                        <div className="ttll__ct" style={{ width: "100%" }}
+                        >
+                            <div className="ttll__place">
+                                KHÁCH SẠN ĐÀ NẴNG
+                            </div>
+                            <div className="ttll__number">
+                                TEL +84-25-411-7575
+                            </div>
+                            <div className="ttll__fax">
+                                FAX +84-2-4141-7455
+                            </div>
                         </div>
                     </div>
 
-                    <div className="ttll__ct">
-                        <div className="ttll__place">
-                            KHÁCH SẠN  SÀI GÒN
-                        </div>
-                        <div className="ttll__number">
-                            TEL +84-55-922-1040
-                        </div>
-                        <div className="ttll__fax">
-                            FAX +84-2-3030-6000
-                        </div>
-                        <Link to="/">
-                            <span>
-                                Xem chi tiết
-                            </span>
-                        </Link>
-                    </div>
 
-                    <div className="ttll__ct">
-                        <div className="ttll__place">
-                            KHÁCH SẠN ĐÀ NẴNG
-                        </div>
-                        <div className="ttll__number">
-                            TEL +84-25-411-7575
-                        </div>
-                        <div className="ttll__fax">
-                            FAX +84-2-4141-7455
-                        </div>
-                        <Link to="/">
-                            <span>
-                                Xem chi tiết
-                            </span>
-                        </Link>
-                    </div>
 
 
                     <div className="ms__title">
                         LOTTE HOTEL Meeting Service
                     </div>
                     <div className="ms">
+
                         <div className="ms__ct">
-                            <div className="ms__img">
+                            <div className="ms__image">
                                 <img src={ms1} />
                             </div>
                             <div clasName="ms__info">
@@ -161,7 +143,7 @@ const Ctconference = () => {
                         </div>
 
                         <div className="ms__ct">
-                            <div className="ms__img">
+                            <div className="ms__image">
                                 <img src={ms2} />
                             </div>
                             <div clasName="ms__info">
@@ -171,6 +153,7 @@ const Ctconference = () => {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

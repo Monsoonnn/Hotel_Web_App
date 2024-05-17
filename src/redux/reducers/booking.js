@@ -54,7 +54,9 @@ export const bookingReducer = (state = initBooking, action) => {
                 ...newState,
                 totalPrice: action.totalPrice,
             }
-            console.log(newState)
+            return newState
+        case "CLEAR":
+            return []
         default:
             return state;
     }

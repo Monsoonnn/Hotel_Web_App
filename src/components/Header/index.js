@@ -44,9 +44,6 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="header__rewards">
-                    Hotel rewards
-                </div>
                 {booking && (
                     <>
                     <div className="bookingBorder">

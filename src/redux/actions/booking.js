@@ -30,3 +30,8 @@ export const confirmBooking = (totalPrice) =>{
         totalPrice: totalPrice,
     };
 }
+export const clearBooking = () =>{
+    return{
+        type: "CLEAR",
+    };
+}

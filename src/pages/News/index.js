@@ -1,13 +1,10 @@
-
-import { Col, Form, Row, Button, Input } from 'antd';
+import React, { useRef, useState } from 'react';
+import { SearchOutlined } from '@ant-design/icons';
+import { Col, Form, Row, Button, Input, Space, Table } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
-import { DatePicker, Table, AutoComplete } from 'antd';
-import HeaderAll from "../../components/HeaderAll";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import React, { useEffect, useState } from 'react';
-import { get } from '../../utils/request';
-
+import { DatePicker, AutoComplete } from 'antd';
+import "./news.css"
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const layout = {
     name: "careerForm",
@@ -42,97 +39,99 @@ const layout = {
 };
 
 
-const columns = [
-    {
-        title: 'Số thứ tự',
-        dataIndex: 'number',
-        key: 'number',
-    },
-    {
-        title: 'Tên chuỗi',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Danh xưng',
-        dataIndex: 'position',
-        key: 'position',
-    },
-    {
-        title: 'Thời gian',
-        dataIndex: 'time',
-        key: 'time',
-    },
-];
-const dataScoure = [
+const data = [
     {
         key: '1',
-        number: '1',
-        name: 'Khách sạn Hà Nội',
-        position: 'Thực tập',
-        time: 'Từ 12/6 đến 10/7',
+        id: '1',
+        hotel: "Khách sạn Sài gòn",
+        file: '-',
+        date: "20-02-2024"
     },
     {
+        
         key: '2',
-        number: '2',
-        name: 'Khách sạn Đà Nẵng',
-        position: 'Thực tập',
-        time: 'Từ 12/6 đến 10/7',
+        id: '2',
+        hotel: "Khách sạn Hà Nội",
+        file: '-',
+        date: "20-03-2024"
     },
     {
+        
         key: '3',
-        number: '3',
-        name: 'Khách sạn Sài Gòn',
-        position: 'Thực tập',
-        time: 'Từ 12/6 đến 10/7',
+        id: '3',
+        hotel: "Khách sạn Đà Nẵng",
+        file: '-',
+        date: "18-02-2024"
+    },
+    {
+        
+        key: '4',
+        id: '4',
+        hotel: "Khách sạn Sài gòn",
+        file: '-',
+        date: "21-04-2024"
     },
 ];
 
-
-const Career = () => {
-
-    const [data, setData] = useState(dataScoure);
-
-    const [listhotels, setlisthotels] = useState([])
-
-    const [options, setOptions] = useState([])
-
+const columns = [
+    {
+        title: 'Số',
+        dataIndex: 'id',
+        key: 'id',
+        width: '20%',
+        sorter: (a, b) => a.id - b.id,
+        sortDirections: ['descend', 'ascend'],
+    },
+    {
+        title: 'Khách sạn',
+        dataIndex: 'hotel',
+        key: 'hotel',
+        width: '40%',  
+    },
+    {
+        title: 'Tệp đính kèm',
+        dataIndex: 'file',
+        key: 'file',
+        width: '20%',  
+    },
+    {
+        title: 'Ngày tạo',
+        dataIndex: 'date',
+        key: 'date',
+        width: "20%"
+    },
+];
+const News = () => {
     const [top, setTop] = useState('none');
     const [bottom, setBottom] = useState('bottomCenter');
-
+    const [options, setOptions] = useState([])
+    // const [data, setData] = useState();
     const onFinish = (values) => {
-       setData(dataScoure.filter((item) => { return item.name.toLowerCase().includes(values.hotel.toLowerCase())}))
-    };
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
+        // setData(dataScoure.filter((item) => { return item.name.toLowerCase().includes(values.hotel.toLowerCase())}))
+     };
+     const onFinishFailed = (errorInfo) => {
+         console.log('Failed:', errorInfo);
+     };
 
-    useEffect(() => {
-        const fetchAPI = async () =>{
-            const result = await get("/hotels");
-            setlisthotels(result.data.hotels);
-            setOptions(result.data.hotels.map((item) => ({ value: `${item.name}` })))
-        }
-        fetchAPI()
-    },[])
-
+    const navigate = useNavigate();
+    
     return (
         <>
-            <>
-            </>
-
-            <div className='container'>
+            <div className="news" style={{
+                paddingBottom: "100px"
+            }}>
+                <div className="container">
                 <div className="findReservation">
                     <Row>
                         <Col lg={24}>
                             <div className="Career__title" style={{
                                 textAlign: "center",
-                                fontSize: "32px",
-                                fontWeight: "400",
+                                fontSize: "40px",
+                                fontWeight: "600",
                                 padding: "200px 0px",
                                 paddingBottom: "50px",
                             }}>
-                                Khám phá cơ hội nghề nghiệp
+                                Tin tức
                             </div>
                         </Col>
                         <Col lg={24}>
@@ -150,7 +149,7 @@ const Career = () => {
                                 }}
                             >
                                 <FormItem
-                                    label="Khách sạn "
+                                    label="Từ khóa"
                                     name="hotel"
                                     style={{
                                         backgroundColor: "#fff",
@@ -158,7 +157,6 @@ const Career = () => {
                                         padding: "20px 10px",
 
                                     }}
-
                                 >
                                     <AutoComplete
                                         options={options}
@@ -166,7 +164,7 @@ const Career = () => {
                                             minWidth: "280px",
                                             maxWidth: "680px",
                                         }}
-                                        placeholder="Nhập địa điểm"
+                                        placeholder="Nhập từ khóa"
                                         filterOption={(inputValue, option) =>
                                             option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
                                         }
@@ -211,17 +209,29 @@ const Career = () => {
                         </Col>
                     </Row>
                 </div>
-                <Table
-                    columns={columns}
-                    dataSource={data}
-                    pagination={{
-                        position: [top, bottom],
+                    <Table columns={columns} dataSource={data}
+                        pagination={{
+                            position: [top, bottom],
+                        }}
+                        onRow={(record, rowIndex) => {
+                            return {
+                              onClick: (event) => {
+                                navigate(record.id)
+                              }, // click row
+                              onDoubleClick: (event) => {
+                                
+                              }, // double click row
+                              onContextMenu: (event) => {}, // right button click row
+                              onMouseEnter: (event) => {}, // mouse enter row
+                              onMouseLeave: (event) => {}, // mouse leave row
+                            };
                     }}
-                />
+                     />
+                </div>
             </div>
 
         </>
     )
 }
 
-export default Career;
+export default News;

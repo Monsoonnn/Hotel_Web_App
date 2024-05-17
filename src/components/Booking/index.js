@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { newBooking } from "../../redux/actions/booking";
 import { get } from "../../utils/request";
-
+import Swal from 'sweetalert2';
 const { RangePicker } = DatePicker;
 const layout = {
     name: "bookingForm",
@@ -72,6 +72,12 @@ const Booking = () => {
             setOptions(result.data.hotels.map((item) => ({ value: `${item.name}` })))
         }
         fetchAPI()
+        Swal.fire({
+            icon: "info",
+            title: "Đang tải dữ liệu",
+            showConfirmButton: false,
+            timer: 5000,
+        });
     },[])
 
     // console.log(listhotels);

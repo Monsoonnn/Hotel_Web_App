@@ -26,6 +26,10 @@ import Jobs from "../pages/Jobs";
 
 import Careers from "../pages/Careers";
 import Confirm from "../pages/Confirm";
+import News from "../pages/News";
+import NewDetail from "../pages/News/Detail";
+import AboutUs from "../pages/AboutUs";
+import LayoutManager from "../layout/LayoutManager";
 
 export const routes = [
   {
@@ -38,95 +42,115 @@ export const routes = [
       },
       {
         path: "hotel-offers",
-        element: <SlidePack/>
+        element: <SlidePack />
       },
       {
         path: "wedding-conference",
-        element: <WeddingConference/>
+        element: <WeddingConference />
       },
       {
         path: "weddingp",
-        element: <Ctwedding/>,
+        element: <Ctwedding />,
       },
       {
         path: "conferencep",
-        element: <Ctconference/>,
+        element: <Ctconference />,
       },
       {
-        path: "Jobs",
-        element: <Jobs/>
+        path: "jobs",
+        element: <Jobs />
       },
       {
-        path: "Careers",
-        element: <Careers/>
+        path: "careers",
+        element: <Careers />
       },
       {
         path: "reservation",
         element: <Reservation />
+      },
+      {
+        path: "news",
+        element: <News />,
+      },
+      {
+        path: "/news/:newsID",
+        element: <NewDetail />
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />
       }
     ]
-  }, 
+  },
   {
     path: "*",
-    element: <Error404/>
+    element: <Error404 />
   },
   {
     path: "member",
-    element: <LoginPage/>,
+    element: <LoginPage />,
     children: [
       {
         index: true,
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "sign-up",
-        element: <Register/>,
+        element: <Register />,
       },
     ],
   },
   {
     path: "profile",
-    element: <ProfileTemplate/>,
+    element: <ProfileTemplate />,
     children: [
       {
         index: true,
-        element: <ProfileGeneral/>,
+        element: <ProfileGeneral />,
       },
       {
         path: "account-change-password",
-        element: <ChangePasswordForm/>,
+        element: <ChangePasswordForm />,
       },
       {
         path: "account-info",
-        element: <InfoForm/>,
+        element: <InfoForm />,
       },
       {
         path: "account-social-links",
-        element: <SocialLinksForm/>,
+        element: <SocialLinksForm />,
       },
       {
         path: "account-connections",
-        element: <ConnectionsForm/>,
+        element: <ConnectionsForm />,
       },
       {
         path: "account-notifications",
-        element: <NotificationsForm/>,
+        element: <NotificationsForm />,
       }
     ],
-  }, 
+  },
   {
     path: "booking",
-    element: <LayoutBooking/>,
+    element: <LayoutBooking />,
     children: [
       {
         index: true,
-        element: <SearchHotel/>
+        element: <SearchHotel />
       },
       {
         path: "confirm",
-        element: <Confirm/>
+        element: <Confirm />
       }
     ]
-  }
+  },
+  {
+    path: "manager",
+    element: <LayoutManager />,
+    children: [
+      {
+      },
+    ],
+  },
 ];
 

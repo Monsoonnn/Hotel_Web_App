@@ -34,11 +34,6 @@ const HeaderAll = () => {
                             Đăng ký
                         </NavLink>
                         </li>
-                        <li>
-                            <NavLink style={{ fontSize: "14px" ,  paddingTop: "5px"}} >
-                                Tỉ giá VND
-                            </NavLink>
-                        </li>
 
                     </ul>
                 </Col>

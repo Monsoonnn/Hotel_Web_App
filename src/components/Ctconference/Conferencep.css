@@ -11,12 +11,10 @@
   
 .conferencepdc__item{
     padding-right: 50px;
-    padding-left: 10px;
   }
 .gtc__img{
   width: auto;
   max-width: 100%;
-  overflow: hidden;
 }  
 .gtc2__title{
   font-size: 30px;
@@ -51,11 +49,9 @@
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 50px;
-  margin-left: 40px;
 }
-.ht__image{
-  width: 100%;
-  height: 100%;
+.ht__img{
+  overflow: hidden;
   object-fit: cover;
   transform: scale(1.1);
   transition: all 0.5s;
@@ -90,15 +86,11 @@
 }
 .ttll__number{
     margin-top: -28px;
-    margin-left: 300px;
+    margin-left: 450px;
 }
 .ttll__fax{
-  margin-left: 700px;
+  margin-left: 850px;
   margin-top: -28px;
-}
-.link{
-  margin-left: 1100px;
-  margin-top: -25px;
 }
 .ms__title{
   margin-top: 100px;
@@ -115,9 +107,12 @@
   font-size: 20px;
   font-weight: 500;
 }
-.ms__img{
-overflow:hidden;
+.ms__image{
 margin-bottom: 15px;
+display: block;
+}
+.ms__image img{
+  width: 600px;
 }
 .ms__info2{
 font-size: 16px;

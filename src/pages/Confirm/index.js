@@ -7,8 +7,9 @@ import { get } from "../../utils/request";
 import ItemServices from "./ItemServices";
 import UsedService from "./UsedService";
 import { useNavigate } from "react-router-dom";
-import { confirmBooking } from "../../redux/actions/booking";
-
+import { clearBooking, confirmBooking } from "../../redux/actions/booking";
+import ConfirmModal from "../../components/Modal";
+import Swal from 'sweetalert2';
 
 const Confirm = () => {
 
@@ -55,9 +56,20 @@ const Confirm = () => {
         }
     }
 
-    const confirm = () => {
-        navigate('/')
+    const confirm = (id) => {
         dispatchBooking(confirmBooking(totalPrice))
+        Swal.fire({
+            icon: "success",
+            title: "Phòng của bạn đã được đặt",
+            text:  "Mã đặt phòng của bạn là " + id,
+            showConfirmButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+                navigate('/')
+                dispatchBooking(clearBooking())
+            } 
+          });;
+        
     }
 
     return (
@@ -109,11 +121,6 @@ const Confirm = () => {
                                 <div className="CB__note col-12">
                                     <div className="note__title">
                                         <p style={{ margin: "10px 0px", fontSize: "18px", fontWeight: "600" }}>Yêu cầu đặc biệt</p>
-                                        <p>Để đặt dịch vụ đưa đón tại sân bay, quý khách vui lòng liên hệ theo số điện thoại
-                                            hoặc qua email .</p>
-                                        <p>Limousine (4 chỗ): 1.527.500 VNĐ/một chiều</p>
-                                        <p>Limousine (7 chỗ): 1.762.500 VNĐ/một chiều</p>
-                                        <p>(*) Giá trên đã bao gồm thuế giá trị gia tăng và phí phục vụ.</p>
                                     </div>
                                     <div className="note_detail">
                                         <textarea className="note" cols={50} rows={5}></textarea>
@@ -163,7 +170,7 @@ const Confirm = () => {
                                         color: "#fff",
                                         cursor: "pointer"
                                     }}
-                                    onClick={confirm}
+                                    onClick={() => confirm('123')}
                                     >
                                         Xác nhận
                                     </button>

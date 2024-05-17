@@ -49,94 +49,82 @@ const Ctwedding = () => {
 
                     <div className="ht">
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/Spring">
-                                <div className="ht__img">
-                                    <img src={HT1} />
-                                </div>
-                                <div className="ht_place">
-                                    KHÁCH SẠN HÀ NỘI
-                                </div>
-                                <div className="ht__title">
-                                    SIGNIEL Wedding
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={HT1} />
+                            </div>
+                            <div className="ht_place">
+                                KHÁCH SẠN HÀ NỘI
+                            </div>
+                            <div className="ht__title">
+                                SIGNIEL Wedding
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/Spring">
-                                <div className="ht__img">
-                                    <img src={HT2} />
-                                </div>
-                                <div className="ht_place">
-                                    KHÁCH SẠN HÀ NỘI
-                                </div>
-                                <div className="ht__title">
-                                    Crystal Ballroom
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={HT2} />
+                            </div>
+                            <div className="ht_place">
+                                KHÁCH SẠN HÀ NỘI
+                            </div>
+                            <div className="ht__title">
+                                Crystal Ballroom
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/Spring">
-                                <div className="ht__img">
-                                    <img src={HT3} />
-                                </div>
-                                <div className="ht_place">
-                                    KHÁCH SẠN ĐÀ NẴNG
-                                </div>
-                                <div className="ht__title">
-                                    Crystal Ballroom
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={HT3} />
+                            </div>
+                            <div className="ht_place">
+                                KHÁCH SẠN ĐÀ NẴNG
+                            </div>
+                            <div className="ht__title">
+                                Crystal Ballroom
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/Spring">
-                                <div className="ht__img">
-                                    <img src={HT4} />
-                                </div>
-                                <div className="ht_place">
-                                    KHÁCH SẠN ĐÀ NẴNG
-                                </div>
-                                <div className="ht__title">
-                                    Banquet Hall Pushkin
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={HT4} />
+                            </div>
+                            <div className="ht_place">
+                                KHÁCH SẠN ĐÀ NẴNG
+                            </div>
+                            <div className="ht__title">
+                                Banquet Hall Pushkin
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/Spring">
-                                <div className="ht__img">
-                                    <img src={HT5} />
-                                </div>
-                                <div className="ht_place">
-                                    KHÁCH SẠN SÀI GÒN
-                                </div>
-                                <div className="ht__title">
-                                    Private Party
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={HT5} />
+                            </div>
+                            <div className="ht_place">
+                                KHÁCH SẠN SÀI GÒN
+                            </div>
+                            <div className="ht__title">
+                                Private Party
+                            </div>
                         </div>
 
                         <div className="packages__item col-xxl-4  col-xl-4 col-lg-4 col-sm-12">
-                            <Link to="/Spring">
-                                <div className="ht__img">
-                                    <img src={HT6} />
-                                </div>
-                                <div className="ht_place">
-                                    KHÁCH SẠN SÀI GÒN
-                                </div>
-                                <div className="ht__title">
-                                    Crystal Ballroom
-                                </div>
-                            </Link>
+                            <div className="ht__img">
+                                <img src={HT6} />
+                            </div>
+                            <div className="ht_place">
+                                KHÁCH SẠN SÀI GÒN
+                            </div>
+                            <div className="ht__title">
+                                Crystal Ballroom
+                            </div>
                         </div>
                     </div>
-                    <div className="ttll">
+                    <div className="ttll" >
                         <div className="ttll__title">
                             THÔNG TIN LIÊN LẠC
                         </div>
-                        <div className="ttll__wd">
+                        <div className="ttll__wd" style={{ width: "100%" }}>
                             <div className="ttll__place">
                                 KHÁCH SẠN HÀ NỘI
                             </div>
@@ -146,46 +134,33 @@ const Ctwedding = () => {
                             <div className="ttll__fax">
                                 FAX +84-2-3213-1782
                             </div>
-                            <Link to="/spring">
-                                <span>
-                                    Xem chi tiết
-                                </span>
-                            </Link>
+                        </div>
+                        <div className="ttll__wd" style={{ width: "100%" }}>
+                            <div className="ttll__place">
+                                KHÁCH SẠN SÀI GÒN
+                            </div>
+                            <div className="ttll__number">
+                                TEL +84-5-922-1040
+                            </div>
+                            <div className="ttll__fax">
+                                FAX +84-2-3030-6000
+                            </div>
+                        </div>
+
+                        <div className="ttll__wd" style={{ width: "100%" }}>
+                            <div className="ttll__place">
+                                KHÁCH SẠN ĐÀ NẴNG
+                            </div>
+                            <div className="ttll__number">
+                                TEL +84-2-411-7575
+                            </div>
+                            <div className="ttll__fax">
+                                FAX +84-2-4141-7455
+                            </div>
                         </div>
                     </div>
 
-                    <div className="ttll__wd">
-                        <div className="ttll__place">
-                            KHÁCH SẠN SÀI GÒN
-                        </div>
-                        <div className="ttll__number">
-                            TEL +84-2-411-7575
-                        </div>
-                        <div className="ttll__fax">
-                            FAX +84-20-411-745
-                        </div>
-                        <Link to="/spring">
-                            <span>
-                                Xem chi tiết
-                            </span>
-                        </Link>
-                    </div>
-                    <div className="ttll__wd">
-                        <div className="ttll__place">
-                            KHÁCH SẠN ĐÀ NẴNG
-                        </div>
-                        <div className="ttll__number">
-                            TEL +84-5-922-1040
-                        </div>
-                        <div className="ttll__fax">
-                            FAX +84-21-303-600
-                        </div>
-                        <Link to="/spring">
-                            <span>
-                                Xem chi tiết
-                            </span>
-                        </Link>
-                    </div>
+
 
                     <div className="pc__title">
                         PHONG CÁCH CƯỚI TẠI LOTTE HOTEL
@@ -194,7 +169,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC1} />
                         </div>
-                        <div className="pc__info">
+                        <div clasName="pc__info">
                             LOTTE Family Club
                             <div className="pc__info2">
                                 Nó được chuẩn bị sẵn sàng cho bạn nhớ ngày may mắn của bạn. Dịch vụ trung thực được thiết kế để làm hài lòng bạn. Một khi bạn trở thành một thành viên của LOTTE HOTEL Family Club, bạn sẽ có quyền truy cập vào các loại lợi ích và dịch vụ khách hàng mà có thể nhắc nhở bạn về những ngày may mắn của bạn.
@@ -206,7 +181,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC2} />
                         </div>
-                        <div className="pc__info">
+                        <div clasName="pc__info">
                             TRANG TRÍ BÀN
                             <div className="pc__info2">
                                 Các chuyên gia của chúng tôi sẽ trang trí bàn cưới như ước nguyện của bạn. Sự thanh lịch và tinh tế của họ sẽ là sự hỗ trợ đắc lực cho bạn. Họ sẽ giúp bạn tạo phong cách độc đáo của riêng bạn bỏ phòng tiệc và thời gian tổ chức lễ cưới.
@@ -218,7 +193,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC3} />
                         </div>
-                        <div className="pc__info">
+                        <div clasName="pc__info">
                             DỊCH VỤ LIMOUSINE
                             <div className="pc__info2">
                                 Một dịch vụ xe limousine sân bay sẽ được cung cấp cho các cô dâu và chú rể (với 300 khách trở lên). Hãy trải nghiệm dịch vụ VIP mà LOTTE HOTEL cung cấp độc quyền cho khách hàng đám cưới của chúng tôi.
@@ -231,7 +206,7 @@ const Ctwedding = () => {
                         <div className="pc__img">
                             <img src={PC4} />
                         </div>
-                        <div className="pc__info">
+                        <div clasName="pc__info">
                             DỊCH VỤ THỬ ĐỒ ĂN
                             <div className="pc__info2">
                                 Một dịch vụ thử đồ ăn cho menu chọn được cung cấp cho khách hàng đặt tiệc cưới. Hãy trải nghiệm những thực đơn tốt nhất của LOTTE HOTEL cưới đó là chuẩn bị tốt cho khách mời đặc biệt.

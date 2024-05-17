@@ -10,6 +10,7 @@ import './Slider.css';
 import { FaAngleRight } from "react-icons/fa6";
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 const HomeSlider = () => {
     return (
         <>
@@ -31,15 +32,18 @@ const HomeSlider = () => {
                     <div className='container bg-home-1'>
                         <div className='sliderContent'>
                             <div className='sliderTitle'>
-                                Local Stitch Creator Town Seogyo
+                                Khách sạn hàng đầu Việt Nam
                             </div>
                             <div className='sliderDesc'>
-                                STAY, WORK, PLAY, INSPIRED LIKE A LOCAL!
+                                Cung cấp trải nghiệm khách sạn 5 sao kết hợp công nghệ đem lại trải nghiệm mới nhất
                             </div>
-                            <div className='detail'>
-                                Xem chi tiết
-                                <FaAngleRight />
-                            </div>
+                            <Link to="/">
+                                <div className='detail' style={{
+                                    color:" #fff"
+                                }}>
+                                  Chi tiết về chúng tôi <FaAngleRight/>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -49,15 +53,18 @@ const HomeSlider = () => {
                     <div className='container bg-home-1'>
                         <div className='sliderContent'>
                             <div className='sliderTitle'>
-                                LOTTE HOTEL REWARDS
+                                Ưu đãi thành viên đặc biệt
                             </div>
                             <div className='sliderDesc'>
-                                Nâng tầm hành trình của quý khách với các quyền lợi của Chương trình tặng thưởng LOTTE HOTEL REWARDS!
+                                Chương trình tặng thưởng HOTEL REWARDS cho 1000 tài khoản đăng ký hội viên mới nhất từ ngày 10/5/2024
                             </div>
-                            <div className='detail'>
-                                Xem chi tiết
-                                <FaAngleRight />
-                            </div>
+                            <Link to="member/sign-up">
+                                <div className='detail' style={{
+                                    color:" #fff"
+                                }}>
+                                    Đăng ký thành viên để hưởng thụ những quyền lợi tốt nhất <FaAngleRight/>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                 </SwiperSlide>

@@ -48,17 +48,6 @@ const layout = {
         }
     },
 };
-const options = [
-    {
-        value: 'Khách sạn Hà Nội',
-    },
-    {
-        value: 'Khách sạn Sài gòn',
-    },
-    {
-        value: 'Khách sạn Đà Nẵng',
-    },
-];
 const Reservation = () => {
 
     const message = "Quý khách có thể xem tại Trang của tôi > Lịch sử đặt phòng."
@@ -95,35 +84,6 @@ const Reservation = () => {
                                 flexDirection: "column",
                             }}
                         >
-                            <FormItem
-                                label="Khách sạn "
-                                name="hotel"
-                                rules={[
-                                    {
-                                        required: true,
-                                        message: 'Please input hotel name!',
-                                    },
-                                ]}
-                                style={{
-                                    backgroundColor: "#fff",
-                                    marginBottom: "0px",
-                                    padding: "20px 10px",
-
-                                }}
-
-                            >
-                                <AutoComplete
-                                    options={options}
-                                    style={{
-                                        minWidth: "280px",
-                                        maxWidth: "680px",
-                                    }}
-                                    placeholder="Nhập địa điểm"
-                                    filterOption={(inputValue, option) =>
-                                        option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-                                    }
-                                />
-                            </FormItem>
                             <FormItem
                                 label="Mã đặt phòng"
                                 name="idBooking"
