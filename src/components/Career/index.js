@@ -54,7 +54,7 @@ const columns = [
         key: 'name',
     },
     {
-        title: 'Danh xưng',
+        title: 'Vị trí',
         dataIndex: 'position',
         key: 'position',
     },

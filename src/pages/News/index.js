@@ -1,10 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import { Col, Form, Row, Button, Input, Space, Table } from 'antd';
 import FormItem from 'antd/es/form/FormItem';
 import { DatePicker, AutoComplete } from 'antd';
 import "./news.css"
 import { Navigate, useNavigate } from 'react-router-dom';
+import { get } from '../../utils/request';
+import Swal from 'sweetalert2';
+import { TableToDateString} from '../../services/convert';
 
 const layout = {
     name: "careerForm",
@@ -39,38 +42,7 @@ const layout = {
 };
 
 
-const data = [
-    {
-        key: '1',
-        id: '1',
-        hotel: "Khách sạn Sài gòn",
-        file: '-',
-        date: "20-02-2024"
-    },
-    {
-        
-        key: '2',
-        id: '2',
-        hotel: "Khách sạn Hà Nội",
-        file: '-',
-        date: "20-03-2024"
-    },
-    {
-        
-        key: '3',
-        id: '3',
-        hotel: "Khách sạn Đà Nẵng",
-        file: '-',
-        date: "18-02-2024"
-    },
-    {
-        
-        key: '4',
-        id: '4',
-        hotel: "Khách sạn Sài gòn",
-        file: '-',
-        date: "21-04-2024"
-    },
+let dataScoure = [
 ];
 
 const columns = [
@@ -86,7 +58,13 @@ const columns = [
         title: 'Khách sạn',
         dataIndex: 'hotel',
         key: 'hotel',
-        width: '40%',  
+        width: '20%',  
+    },
+    {
+        title: 'Nội dung',
+        dataIndex: 'title',
+        key: 'title',
+        width: '20%',  
     },
     {
         title: 'Tệp đính kèm',
@@ -105,13 +83,36 @@ const News = () => {
     const [top, setTop] = useState('none');
     const [bottom, setBottom] = useState('bottomCenter');
     const [options, setOptions] = useState([])
-    // const [data, setData] = useState();
+    const [data, setData] = useState([])
     const onFinish = (values) => {
-        // setData(dataScoure.filter((item) => { return item.name.toLowerCase().includes(values.hotel.toLowerCase())}))
+        setData(dataScoure.filter((item) => { return item.hotel.toLowerCase().includes(values.hotel.toLowerCase())}))
      };
      const onFinishFailed = (errorInfo) => {
          console.log('Failed:', errorInfo);
      };
+     
+     useEffect(() => {
+        const fetchAPI = async () =>{
+            const result = await get("/news");
+            setData(result.data.newss.map((item,index) => ({
+                key: `${item._id}`,
+                id:`${index + 1}`,
+                hotel: `[${item.hotel}]`,
+                title: `${item.title}`,
+                file: `-`,
+                date: `${TableToDateString(item.date)}`
+            })));
+            dataScoure = data
+        }
+        fetchAPI()
+        Swal.fire({
+            icon: "info",
+            title: "Đang tải dữ liệu",
+            showConfirmButton: false,
+            timer: 5000,
+        });
+    },[])
+
 
     const navigate = useNavigate();
     

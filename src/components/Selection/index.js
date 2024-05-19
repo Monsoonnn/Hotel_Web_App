@@ -20,7 +20,7 @@ const Selection = () => {
                             Chọn thương hiệu/khách sạn
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh1} />
                                 </div>
@@ -42,7 +42,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh2} />
                                 </div>
@@ -64,7 +64,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh3} />
                                 </div>
@@ -86,7 +86,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh4} />
                                 </div>
@@ -108,7 +108,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh5} />
                                 </div>
@@ -131,7 +131,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh6} />
                                 </div>
@@ -154,7 +154,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh7} />
                                 </div>
@@ -177,7 +177,7 @@ const Selection = () => {
                             </Link>
                         </div>
                         <div className="packages__item col-xxl-6  col-xl-6 col-lg-6 col-sm-12">
-                            <Link to="/Spring">
+                            <Link >
                                 <div className="item__img">
                                     <img src={Anh8} />
                                 </div>

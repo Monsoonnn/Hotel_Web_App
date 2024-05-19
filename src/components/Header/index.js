@@ -40,6 +40,10 @@ const Header = () => {
                             <Link to="/hotel-offers">ƯU ĐÃI</Link>
                         </li>
                         <li>
+                            <Link to="/jobs">TUYỂN DỤNG</Link>
+                        </li>
+                        
+                        <li>
                             <Link to="/wedding-conference">LỄ CƯỚI & HỘI NGHỊ</Link>
                         </li>
                     </ul>

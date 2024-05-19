@@ -1,3 +1,4 @@
+import { getTodayDate } from "../../services/convert";
 
 
 const initBooking = []
@@ -8,12 +9,13 @@ export const bookingReducer = (state = initBooking, action) => {
         case "NEW_BOOKING":
             newState = {
                 hotel: action.data.hotel,
-                ci: action.data.checkIn,
-                co: action.data.checkOut,
+                checkIn: action.data.checkIn,
+                checkOut: action.data.checkOut,
                 adult: action.data.numberAdult,
                 child: action.data.numberChild,
                 room: action.data.numberRoom,
                 offset: action.data.offset,
+                bookingDate: getTodayDate(),
             };
             // console.log(newState)
             return newState;
@@ -21,8 +23,7 @@ export const bookingReducer = (state = initBooking, action) => {
             newState = {
                 ...newState,
                 roomID: action.data.roomID,
-                packageID: action.data.packageID,
-                packageName: action.data.packageName,
+                packageId: action.data.packageID,
                 price: action.data.price,
             };
             console.log(newState)
@@ -54,8 +55,10 @@ export const bookingReducer = (state = initBooking, action) => {
                 ...newState,
                 totalPrice: action.totalPrice,
             }
+            console.log(newState)
             return newState
         case "CLEAR":
+            console.log(newState)
             return []
         default:
             return state;

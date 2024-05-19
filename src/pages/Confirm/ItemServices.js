@@ -4,7 +4,7 @@ import { Button, Flex, Tooltip } from 'antd';
 import { addServies } from "../../redux/actions/booking";
 const ItemServices = (props) => {
 
-    const { key, item } = props;
+    const {  item } = props;
     const dispatchBooking = useDispatch();
     const addServices = () => {
         dispatchBooking(addServies(item));

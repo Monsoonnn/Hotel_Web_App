@@ -32,7 +32,7 @@ const Job = () => {
                 <div className="td__desc">
                     Các lĩnh vực tuyển dụng: Phòng, hỗ trợ quản lý, tài chính, quản lý bán hàng, cơ sở vật chất, v.v.
                     <div>Thời gian tuyển dụng: Hai lần một năm (nửa đầu năm/nửa cuối năm)</div>
-                    <div>Cách thức nộp đơn: Đăng ký tại Trang chủ tuyển dụng của Tập đoàn Lotte</div>
+                    <div>Cách thức nộp đơn: Thông qua email của công ty</div>
                     <div>
                         <Link to="/Careers">
                             Đăng ký tại Trang chủ tuyển dụng tại đây

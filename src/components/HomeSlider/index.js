@@ -37,7 +37,7 @@ const HomeSlider = () => {
                             <div className='sliderDesc'>
                                 Cung cấp trải nghiệm khách sạn 5 sao kết hợp công nghệ đem lại trải nghiệm mới nhất
                             </div>
-                            <Link to="/">
+                            <Link to="about-us">
                                 <div className='detail' style={{
                                     color:" #fff"
                                 }}>

@@ -1,24 +1,37 @@
 
 import { useDispatch } from "react-redux";
 import { addPackages } from "../../redux/actions/booking";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { formatCash } from "../../services/convert";
+import Swal from "sweetalert2";
 
 
 const Packages = (props) => {
-    const { room, packageID, packageName } = props;
-    const priceString = formatCash(2270000);
-    const price = 2270000;
+    const { room, packageID, packageName, packagePrice, desc } = props;
+    const priceString = formatCash(packagePrice);
+    const price = packagePrice;
     const packages = {
         roomID: room,
         packageID: packageID,
         packageName: packageName,
         price: price,
     }
-    // console.log(packages)
+    console.log(packages)
+    const navigate = useNavigate();
     const dispatchBooking = useDispatch();
     const pickingPakages = (packages) => {
-        dispatchBooking(addPackages(packages))
+        Swal.fire({
+            icon: "question",
+            text: "Bạn muốn đặt gói phòng này chứ ?",
+            showConfirmButton: true,
+            showDenyButton: true,
+          }).then((result) => {
+            if (result.isConfirmed) {
+                dispatchBooking(addPackages(packages))
+                navigate('confirm')
+            } 
+          });;
+       
     }
 
     return (
@@ -29,17 +42,14 @@ const Packages = (props) => {
                 </div>
                 <div className="package__Room col-sm-11 col-11">
                     <div className="package__Room__name">
-                        FLASH SALES - STUNNING HOLIDAY
+                        {packageName}
                     </div>
                     <div className="packages__Room__desc">
-                        Dành cho thành viên của hệ thống
+                       {desc}
                     </div>
-
-                    <Link to="confirm">
-                        <div className="packages__Room__button-price" onClick={() => pickingPakages(packages)}>
+                    <div className="packages__Room__button-price" onClick={() => pickingPakages(packages)}>
                             {priceString + " VND"}  
                         </div>
-                    </Link>
 
                 </div>
             </div>

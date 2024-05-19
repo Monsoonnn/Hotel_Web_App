@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProduct } from "../../services/getProduct";
 
 import { dateConverter, formatCash } from "../../services/convert";
-import { get } from "../../utils/request";
+import { get, post } from "../../utils/request";
 import ItemServices from "./ItemServices";
 import UsedService from "./UsedService";
 import { useNavigate } from "react-router-dom";
@@ -22,8 +22,11 @@ const Confirm = () => {
     const navigate = useNavigate();
 
     const book = useSelector(state => state.bookingReducer);
+
     // console.log(book)
     const [hotel, setHotel] = useState();
+
+    const [room, setRoom] = useState();
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -31,6 +34,8 @@ const Confirm = () => {
             setHotel(result.data.hotel)
             const services = await get("/services");
             setListServies(services.data.services);
+            const getRoom = await get("/rooms/"+book.roomID);
+            setRoom(getRoom.data.room);
         }
         if (book.length !== 0) {
             fetchAPI()
@@ -42,7 +47,7 @@ const Confirm = () => {
 
     }, [])
 
-    const days = dateConverter(book.ci, book.co);
+    const days = dateConverter(book.checkIn, book.checkOut);
     const tax = 566150;
 
     const roomPrice = days * book.price;
@@ -56,19 +61,40 @@ const Confirm = () => {
         }
     }
 
-    const confirm = (id) => {
-        dispatchBooking(confirmBooking(totalPrice))
+    const confirm = async (id) => {
+        // dispatchBooking(confirmBooking(totalPrice))
         Swal.fire({
-            icon: "success",
-            title: "Phòng của bạn đã được đặt",
-            text:  "Mã đặt phòng của bạn là " + id,
+            icon: "question",
+            text: "Bạn chắn chắn muốn đặt phòng chứ ?",
             showConfirmButton: true,
+            showDenyButton: true,
           }).then((result) => {
             if (result.isConfirmed) {
-                navigate('/')
-                dispatchBooking(clearBooking())
+                // console.log(book)
+                const finalBook = {
+                    ...book,
+                    totalPrice,
+                }
+                // console.log(finalBook)
+                const result = post(finalBook, `/bookings`)
+                // console.log(result)
+                if(result.status !== `error`){
+                    
+                    Swal.fire({
+                        icon: "success",
+                        title: "Phòng của bạn đã được đặt",
+                        text:  "Mã đặt phòng của bạn là " + id,
+                        showConfirmButton: true,
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            navigate('/')
+                            dispatchBooking(clearBooking())
+                        } 
+                      });;
+                }
             } 
           });;
+        
         
     }
 
@@ -83,7 +109,7 @@ const Confirm = () => {
                             {hotel.name}
                         </div>
                         <div className="CB__Room col-12" style={{ fontSize: "24px", fontWeight: "600" }}>
-                            {book.roomID}
+                            {room && room.name}
                         </div>
                         <hr style={{ marginTop: "20px" }}></hr>
                         <div className="CB__title col-12" style={{ margin: "20px 0px", fontSize: "20px", fontWeight: "600" }}>
@@ -132,7 +158,7 @@ const Confirm = () => {
                                     Giá phòng
                                 </div>
                                 <div className="CB__price_date">
-                                    <p> <span style={{ margin: "10px 0px", fontSize: "16px", fontWeight: "600" }}>Thời gian lưu trú: </span> {book.ci.$d.toDateString()} - {book.co.$d.toDateString()} </p>
+                                    <p> <span style={{ margin: "10px 0px", fontSize: "16px", fontWeight: "600" }}>Thời gian lưu trú: </span> {book.checkIn.$d.toDateString()} - {book.checkOut.$d.toDateString()} </p>
                                     <p>
                                         <span style={{ margin: "10px 0px", fontSize: "16px", fontWeight: "600" }}>Tổng giá phòng: </span>
                                         <span style={{ textAlign: "right" }}>{formatCash(roomPrice)} VND</span>
