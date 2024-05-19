@@ -30,6 +30,7 @@ import News from "../pages/News";
 import NewDetail from "../pages/News/Detail";
 import AboutUs from "../pages/AboutUs";
 import LayoutManager from "../layout/LayoutManager";
+import ManageStaff from "../components/ManageListStaff";
 
 export const routes = [
   {
@@ -148,7 +149,9 @@ export const routes = [
     path: "manager",
     element: <LayoutManager />,
     children: [
-      {
+      {  
+        index: true,
+        element: <ManageStaff/>
       },
     ],
   },

@@ -60,7 +60,34 @@ const Confirm = () => {
             totalPrice += item.price;
         }
     }
-
+    async function handleBooking(finalBook) {
+        try {
+            const result = await post(finalBook, '/bookings'); // Đợi post hoàn thiện
+    
+            if (result) {
+                console.log(result);
+                Swal.fire({
+                    icon: "success",
+                    title: "Phòng của bạn đã được đặt",
+                    text: "Mã đặt phòng của bạn là " + result.data.booking.bookingCode,
+                    showConfirmButton: true,
+                }).then((swalResult) => {
+                    if (swalResult.isConfirmed) {
+                        navigate('/');
+                        dispatchBooking(clearBooking());
+                    }
+                });
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            Swal.fire({
+                icon: "error",
+                title: "Đặt phòng thất bại",
+                text: "Có lỗi xảy ra khi đặt phòng. Vui lòng thử lại sau.",
+                showConfirmButton: true,
+            });
+        }
+    }
     const confirm = async (id) => {
         // dispatchBooking(confirmBooking(totalPrice))
         Swal.fire({
@@ -75,27 +102,10 @@ const Confirm = () => {
                     ...book,
                     totalPrice,
                 }
-                // console.log(finalBook)
-                const result = post(finalBook, `/bookings`)
-                // console.log(result)
-                if(result.status !== `error`){
-                    
-                    Swal.fire({
-                        icon: "success",
-                        title: "Phòng của bạn đã được đặt",
-                        text:  "Mã đặt phòng của bạn là " + id,
-                        showConfirmButton: true,
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                            navigate('/')
-                            dispatchBooking(clearBooking())
-                        } 
-                      });;
-                }
+                handleBooking(finalBook)
             } 
           });;
-        
-        
+
     }
 
     return (

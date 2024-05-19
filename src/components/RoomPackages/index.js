@@ -25,7 +25,7 @@ const RoomPackages = () => {
                                 Khám phá các quyền lợi khác nhau của HOTELS & RESORTS!
                             </div>
                             <button>
-                                <Link to="/Spring">
+                                <Link >
                                     <span>
                                     ĐẶT DỊCH VỤ
                                     </span>
@@ -44,7 +44,7 @@ const RoomPackages = () => {
                                 Chúng tôi đã chuẩn bị những ưu đãi trong đó đã bao gồm bữa sáng để quý khách có thể tận hưởng kỳ nghỉ
                             </div>
                             <button>
-                                <Link to="/Spring">
+                                <Link >
                                     <span>
                                     ĐẶT DỊCH VỤ
                                     </span>
@@ -62,7 +62,7 @@ const RoomPackages = () => {
                                 Tìm phòng tại LOTTE HOTELS & RESORTS trên toàn thế giới với mức giá đặc biệt dành cho các thành viên
                             </div>
                             <button>
-                                <Link to="/Spring">
+                                <Link >
                                     <span>
                                     ĐẶT DỊCH VỤ
                                     </span>
