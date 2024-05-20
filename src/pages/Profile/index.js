@@ -24,6 +24,7 @@ const ProfileTemplate = () => {
                             <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-social-links">Liên kết mạng xã hội</Link>
                             <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-connections">Kết nối</Link>
                             <Link className="list-group-item list-group-item-action" data-toggle="list" to="account-notifications">Thông báo</Link>
+                            <Link className="list-group-item list-group-item-action" data-toggle="list" to="history-booking">Lịch sử đặt phòng</Link>
                         </div>
                     </div>
                     <div className="col-md-9">

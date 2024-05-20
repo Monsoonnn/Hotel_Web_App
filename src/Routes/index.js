@@ -32,6 +32,7 @@ import AboutUs from "../pages/AboutUs";
 import LayoutManager from "../layout/LayoutManager";
 import StaffManagement from "../components/ManageListStaff";
 import GeneralManagerDashboard from "../components/GeneralManage";
+import BookingHistory from "../components/BookingHistory";
 // import Manage from "../pages/Manage";
 // import BookingHistory from "../components/HistoryAndReview";
 
@@ -132,10 +133,10 @@ export const routes = [
         path: "account-notifications",
         element: <NotificationsForm />,
       },
-      // {
-      //   path: "history-booking",
-      //   element: <BookingHistory/>,
-      // }
+      {
+        path: "history-booking",
+        element: <BookingHistory/>,
+      }
     ],
   },
   {

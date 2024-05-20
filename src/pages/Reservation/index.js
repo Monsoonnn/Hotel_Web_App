@@ -204,6 +204,8 @@ const Reservation = () => {
                                         paddingBottom: "10px",
                                     }}>{`Thông tin đặt phòng: ${bookingData[0].bookingCode}`}</p>
                                     <p>{`Thời điểm đặt: ${convertToDateString(bookingData[0].bookingDate)}`}</p>
+                                    <p>{`Thời điểm check-in: ${convertToDateString(bookingData[0].checkIn)}`}</p>
+                                    <p>{`Thời điểm check-out: ${convertToDateString(bookingData[0].checkOut)}`}</p>
                                     <p>{`Khách sạn đã đặt: ${hotelName}`}</p>
                                     <p>{`Số lượng người lớn: ${bookingData[0].adult} người`}</p>
                                     <p>{`Số lượng trẻ con: ${bookingData[0].child} bé`}</p>
