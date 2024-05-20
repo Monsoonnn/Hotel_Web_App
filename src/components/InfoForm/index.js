@@ -5,34 +5,23 @@ const InfoForm = () => {
         <div className="" id="account-info">
             <div className="card-body pb-2">
                 <div className="form-group">
-                    <label className="form-label">Bio</label>
-                    <textarea className="form-control" rows="5">...   ~~   0_o</textarea>
+                    <label className="form-label">Mô tả</label>
+                    <textarea className="form-control" rows="5"></textarea>
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Birthday</label>
-                    <input type="text" className="form-control" value="Feb21, 2003" />
-                </div>
-                <div className="form-group">
-                    <label className="form-label">Country</label>
-                    <select className="custom-select">
-                        <option selected>VietNam</option>
-                        <option>USA</option>
-                        <option>Canada</option>
-                        <option>UK</option>
-                        <option>Germany</option>
-                        <option>France</option>
-                    </select>
+                    <label className="form-label">Sinh nhật</label>
+                    <input type="text" className="form-control" defaultValue="Feb21, 2003" />
                 </div>
             </div>
             <hr className="border-light m-0" />
             <div className="card-body pb-2">
-                <h6 className="mb-4">Contacts</h6>
+                <h6 className="mb-4">Liên hệ</h6>
                 <div className="form-group">
-                    <label className="form-label">Phone</label>
-                    <input type="text" className="form-control" value="+0 (123) 456 7891" />
+                    <label className="form-label">Số điện thoại</label>
+                    <input type="text" className="form-control" defaultValue="+0 (123) 456 7891" />
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Website</label>
+                    <label className="form-label">Trang chủ</label>
                     <input type="text" className="form-control" />
                 </div>
             </div>

@@ -3,40 +3,36 @@ import React, { useEffect, useId, useState } from 'react';
 import { Table, Input, Button, Modal, Form, DatePicker, Select } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-import FormItem from "antd/es/form/FormItem";
-import { TableToDateString } from '../../services/convert';
 import { get } from '../../utils/request';
-import moment from 'moment';
-import { isVisible } from '@testing-library/user-event/dist/utils';
-import ModalEdit from './ModalEdit';
 import Swal from 'sweetalert2';
-import ModalCreate from './ModalCreate';
+import ModalClientEdit from './ModalEdit';
+import ModalClientCreate from './ModalCreate';
 const { RangePicker } = DatePicker;
 
 const { Search } = Input;
 const { Option } = Select;
 
-const StaffManagement = () => {
+const ClientManagement = () => {
 
-  const [staff, setStaff] = useState([]);
-  const [filteredStaff, setFilteredStaff] = useState(staff);
+  const [client, setClient] = useState([]);
+  const [filteredClient, setFilteredClient] = useState(client);
   const [top, setTop] = useState('none');
   const [bottom, setBottom] = useState('bottomCenter');
   const id = useId();
 
 
   const handleSearch = (value) => {
-    const filtered = staff.filter(s => s.name.toLowerCase().includes(value.toLowerCase()));
-    setFilteredStaff(filtered);
+    const filtered = client.filter(s => s.fullName.toLowerCase().includes(value.toLowerCase()));
+    setFilteredClient(filtered);
   };
   const handleAdd = (value) => {
-    const newStaffs = [
-      ...staff,
+    const newClients = [
+      ...client,
       value
     ]   
-    // console.log(newStaffs)
-    setStaff(newStaffs)
-    setFilteredStaff(newStaffs)
+    // console.log(newClients)
+    setClient(newClients)
+    setFilteredClient(newClients)
   };
   const columns = [
     {
@@ -47,30 +43,19 @@ const StaffManagement = () => {
       sortDirections: ['descend', 'ascend'],
     },
     {
-      title: 'Mã nhân viên',
-      dataIndex: 'staffCode',
-      key: 'staffCode',
+      title: 'Họ và tên',
+      dataIndex: 'fullName',
+      key: 'fullName',
     },
     {
-      title: 'Họ tên',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Địa chỉ',
+      dataIndex: 'address',
+      key: 'address',
     },
     {
-      title: 'Chức vụ',
-      dataIndex: 'position',
-      key: 'position',
-    },
-    {
-      title: 'Ngày sinh',
-      dataIndex: 'birthday',
-      key: 'birthday',
-      render: (text) => moment(text).format("DD/MM/YYYY")
-    },
-    {
-      title: 'Giới tính',
-      dataIndex: 'sex',
-      key: 'sex',
+      title: 'Ghi chú',
+      dataIndex: 'note',
+      key: 'note',
     },
     {
       title: '',
@@ -83,7 +68,7 @@ const StaffManagement = () => {
             <div className='edit' style={{
               marginRight: "5px"
             }}>
-              <ModalEdit
+              <ModalClientEdit
                 initialValues={record}
                 update={updateStaff}
               />
@@ -113,41 +98,39 @@ const StaffManagement = () => {
       showDenyButton: true,
     }).then((swalResult) => {
       if (swalResult.isConfirmed) {
-        const newStaff = staff.filter(s => s.key !== key).map((item, index) => {
+        const newClient = client.filter(s => s.key !== key).map((item, index) => {
           return {
             ...item,
             stt: index+1,
           }
         });
-        setStaff(newStaff);
-        setFilteredStaff(newStaff);
+        setClient(newClient);
+        setFilteredClient(newClient);
       }
     });
     
   };
 
   const updateStaff = (values) => {
-    // console.log(values)
-    const newStaff = staff.map((item) => (item.staffCode === values.staffCode ? { ...values } : item))
-    setStaff(newStaff);
-    setFilteredStaff(newStaff);
+    console.log(values)
+    const newClient = client.map((item) => (item.stt === values.stt ? { ...values } : item))
+    setClient(newClient);
+    setFilteredClient(newClient);
   }
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const result = await get("/staffs");
-      const newStaffs = result.data.staffs.map((item, index) => ({
+      const result = await get("/clients");
+      const newClients = result.data.clients.map((item, index) => ({
         key: `${item._id}`,
         stt: `${index + 1}`,
-        staffCode: `${item.staffCode}`,
-        name: `${item.fullName}`,
-        sex: `${item.gender}`,
-        position: `${item.position}`,
-        birthday: `${(item.birthDate)}`
+        fullName: `${item.fullName}`,
+        address: `${item.address}`,
+        note: `${item.note}`,
       }))
       // console.log(newStaffs)
-      setStaff(newStaffs);
-      setFilteredStaff(newStaffs)
+      setClient(newClients);
+      setFilteredClient(newClients)
       // dataScoure = data
     }
     fetchAPI()
@@ -157,7 +140,7 @@ const StaffManagement = () => {
 
   return (
 
-    <>
+    <div>
       <div className="List__title" style={{
         textAlign: "center",
         fontSize: "32px",
@@ -166,10 +149,10 @@ const StaffManagement = () => {
         paddingBottom: "50px",
         position: "relative",
       }}>
-        Danh sách nhân viên
+        Danh sách khách hàng
       </div>
 
-      <Search placeholder="Tìm kiếm nhân viên" onSearch={handleSearch}
+      <Search placeholder="Tìm kiếm khách hàng" onSearch={handleSearch}
         style={{
           width: 300,
           marginTop: 20,
@@ -179,15 +162,15 @@ const StaffManagement = () => {
         }}
       />
 
-      <ModalCreate
+      <ModalClientCreate
         create={handleAdd}
-        length={staff.length}
+        length={client.length}
         // initdata={[]}
       />
 
       <Table className="staff-management-table" style={{
         marginLeft: 30,
-      }} columns={columns} dataSource={filteredStaff}
+      }} columns={columns} dataSource={filteredClient}
         pagination={{
           position: [top, bottom],
         }}
@@ -207,10 +190,10 @@ const StaffManagement = () => {
         }}
 
       />
-    </>
+    </div>
   );
 };
 
 
 
-export default StaffManagement;
+export default ClientManagement;

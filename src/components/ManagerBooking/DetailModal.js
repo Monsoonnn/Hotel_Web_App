@@ -6,6 +6,7 @@ import { EditOutlined, MoreOutlined } from "@ant-design/icons";
 import moment from 'moment';
 import { useState } from 'react';
 import { convertToDateString, formatCash } from '../../services/convert';
+import { get } from '../../utils/request';
 const { Search } = Input;
 const { Option } = Select;
 
@@ -13,8 +14,10 @@ const DetailModal = (props) => {
 
     const { item, update } = props;
     const [IsModalOpen, setIsModalOpen] = useState(false);
-
-
+    const [hotelName, setHotel] = useState();
+    const [roomName, setRoom] = useState();
+    const [packageName, setPackage] = useState();
+    
     // const [bookingData, setBookingData] = useState([])
     // const [hotelName, setHotel] = useState();
     // const [roomName, setRoom] = useState();
@@ -24,15 +27,33 @@ const DetailModal = (props) => {
     if (item) {
         item.bookingDate = moment(item.bookingDate, "YYYY/MM/DD")
     }
+    const getHotel = async (id) => {
+        const result = await get('/hotels/' + id);
+        setHotel(result.data.hotel.name);
+    }
+
+    const getRoom = async (id) => {
+        const result = await get('/rooms/' + id);
+        setRoom(result.data.room.name);
+    }
+    const getPackage = async (id) => {
+        const result = await get('/packages/' + id);
+        setPackage(result.data.package.name);
+    }
     // console.log(item);
     const handleShowModal = () => {
         setIsModalOpen(true);
+        const hotel = getHotel(item.hotel)
+        const room = getRoom(item.roomID)
+        const pack = getPackage(item.packageId)
     }
 
     const handleModalCancel = () => {
         setIsModalOpen(false);
     }
 
+   
+    
     return (
         <>
             <Button
@@ -43,7 +64,8 @@ const DetailModal = (props) => {
                 style={{
                     width: "32px",
                     height: "32px",
-                    margin: "0px"
+                    margin: "0px",
+                    marginRight: "5px",
                 }}
 
             />
@@ -71,11 +93,11 @@ const DetailModal = (props) => {
                         <p>{`Thời điểm đặt: ${convertToDateString(item.bookingDate)}`}</p>
                         <p>{`Thời điểm check-in: ${convertToDateString(item.checkIn)}`}</p>
                         <p>{`Thời điểm check-out: ${convertToDateString(item.checkOut)}`}</p>
-                        <p>{`Khách sạn đã đặt: ${item.hotelName}`}</p>
+                        <p>{`Khách sạn đã đặt: ${hotelName}`}</p>
                         <p>{`Số lượng người lớn: ${item.adult} người`}</p>
                         <p>{`Số lượng trẻ con: ${item.child} bé`}</p>
-                        <p>{`Loại phòng đã đặt: ${item.roomName}`}</p>
-                        <p>{`Gói khuyến mãi phòng đã đặt: ${item.packageName}`}</p>
+                        <p>{`Loại phòng đã đặt: ${roomName}`}</p>
+                        <p>{`Gói khuyến mãi phòng đã đặt: ${packageName}`}</p>
                         <p>{`Số lượng phòng đặt: ${item.room} phòng`}</p>
                         <p>{`Danh sách dịch vụ đã đặt: `}</p>
                         {item.services.map((item) => {

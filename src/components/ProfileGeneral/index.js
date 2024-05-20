@@ -1,40 +1,49 @@
-import React from 'react';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 const ProfileGeneral = ({ swap }) => {
+
+    const login = useSelector(state => state.isUserLogin)
+
     return (
         <div className="tab-pane fade active show" id="account-general">
             <div className="card-body media align-items-center">
-                <img src="img/avatar1.png" alt="Avatar" className="d-block ui-w-80" />
+                <img src={login.photo} alt="Avatar" className="d-block ui-w-80" />
                 <div className="media-body ml-4">
                     <label className="btn btn-outline-primary">
-                        Upload new photo
+                        Cập nhật ảnh mới
                         <input type="file" className="account-settings-fileinput" />
                     </label> &nbsp;
-                    <button type="button" className="btn btn-default md-btn-flat" onClick={swap}>Reset</button>
-                    <div className="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                    {/* <button type="button" className="btn btn-default md-btn-flat" onClick={swap}>Reset</button> */}
+                    <div className="text-light small mt-1">Cho phép JPG, GIF, PNG. Tối đa 800K dữ liệu</div>
                 </div>
             </div>
             <hr className="border-light m-0" />
             <div className="card-body">
                 <div className="form-group">
-                    <label className="form-label">Username</label>
-                    <input type="text" className="form-control mb-1" value=":v" />
+                    <label className="form-label">Tài khoản</label>
+                    <input className="form-control mb-1" defaultValue={login.email} />
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Name</label>
-                    <input type="text" className="form-control" value="Thanh" />
+                    <label className="form-label">Họ và tên</label>
+                    <input className="form-control" defaultValue={login.name} />
                 </div>
                 <div className="form-group">
                     <label className="form-label">E-mail</label>
-                    <input type="text" className="form-control mb-1" value="69vanthanh69@mail.com" />
+                    <input className="form-control mb-1" defaultValue={login.email} />
                     <div className="alert alert-warning mt-3">
-                        Your email is not confirmed. Please check your inbox.<br />
-                        <a href="javascript:void(0)">Resend confirmation</a>
+                        Email của bạn chưa được xác thực<br />
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="form-label">Company</label>
-                    <input type="text" className="form-control" value="Company Ltd." />
+                    <label className="form-label">Ví trí</label>
+                    <input className="form-control" defaultValue={login.role}/>
+                </div>
+                <div className="form-group">
+                    <label className="form-label">Công ty</label>
+                    <input className="form-control" defaultValue="Company Ltd." />
                 </div>
             </div>
         </div>

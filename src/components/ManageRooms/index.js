@@ -4,39 +4,39 @@ import { Table, Input, Button, Modal, Form, DatePicker, Select } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import FormItem from "antd/es/form/FormItem";
-import { TableToDateString } from '../../services/convert';
+import { TableToDateString, formatCash } from '../../services/convert';
 import { get } from '../../utils/request';
 import moment from 'moment';
 import { isVisible } from '@testing-library/user-event/dist/utils';
-import ModalEdit from './ModalEdit';
 import Swal from 'sweetalert2';
-import ModalCreate from './ModalCreate';
+import ModalRoomEdit from './ModalEdit';
+import ModalRoomCreate from './ModalCreate';
 const { RangePicker } = DatePicker;
 
 const { Search } = Input;
 const { Option } = Select;
 
-const StaffManagement = () => {
+const RoomManagement = () => {
 
-  const [staff, setStaff] = useState([]);
-  const [filteredStaff, setFilteredStaff] = useState(staff);
+  const [rooms, setRooms] = useState([]);
+  const [filteredRoom, setfilteredRoom] = useState(rooms);
   const [top, setTop] = useState('none');
   const [bottom, setBottom] = useState('bottomCenter');
   const id = useId();
 
 
   const handleSearch = (value) => {
-    const filtered = staff.filter(s => s.name.toLowerCase().includes(value.toLowerCase()));
-    setFilteredStaff(filtered);
+    const filtered = rooms.filter(s => s.name.toLowerCase().includes(value.toLowerCase()));
+    setfilteredRoom(filtered);
   };
   const handleAdd = (value) => {
-    const newStaffs = [
-      ...staff,
+    const newClients = [
+      ...rooms,
       value
     ]   
     // console.log(newStaffs)
-    setStaff(newStaffs)
-    setFilteredStaff(newStaffs)
+    setRooms(newClients)
+    setfilteredRoom(newClients)
   };
   const columns = [
     {
@@ -44,33 +44,28 @@ const StaffManagement = () => {
       dataIndex: 'stt',
       key: 'stt',
       sorter: (a, b) => a.stt - b.stt,
-      sortDirections: ['descend', 'ascend'],
+    sortDirections: ['descend', 'ascend'],
     },
     {
-      title: 'Mã nhân viên',
-      dataIndex: 'staffCode',
-      key: 'staffCode',
-    },
-    {
-      title: 'Họ tên',
+      title: 'Tên phòng',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Chức vụ',
-      dataIndex: 'position',
-      key: 'position',
+      title: 'Loại phòng',
+      dataIndex: 'type',
+      key: 'type',
     },
     {
-      title: 'Ngày sinh',
-      dataIndex: 'birthday',
-      key: 'birthday',
-      render: (text) => moment(text).format("DD/MM/YYYY")
+        title: 'Giá phòng (VND)',
+        dataIndex: 'price',
+        key: 'price',
+        render: (text) => formatCash(text),
     },
     {
-      title: 'Giới tính',
-      dataIndex: 'sex',
-      key: 'sex',
+      title: 'Mô tả',
+      dataIndex: 'description',
+      key: 'description',
     },
     {
       title: '',
@@ -83,7 +78,7 @@ const StaffManagement = () => {
             <div className='edit' style={{
               marginRight: "5px"
             }}>
-              <ModalEdit
+              <ModalRoomEdit
                 initialValues={record}
                 update={updateStaff}
               />
@@ -113,14 +108,14 @@ const StaffManagement = () => {
       showDenyButton: true,
     }).then((swalResult) => {
       if (swalResult.isConfirmed) {
-        const newStaff = staff.filter(s => s.key !== key).map((item, index) => {
+        const newRooms = rooms.filter(s => s.key !== key).map((item, index) => {
           return {
             ...item,
             stt: index+1,
           }
         });
-        setStaff(newStaff);
-        setFilteredStaff(newStaff);
+        setRooms(newRooms);
+        setfilteredRoom(newRooms);
       }
     });
     
@@ -128,26 +123,26 @@ const StaffManagement = () => {
 
   const updateStaff = (values) => {
     // console.log(values)
-    const newStaff = staff.map((item) => (item.staffCode === values.staffCode ? { ...values } : item))
-    setStaff(newStaff);
-    setFilteredStaff(newStaff);
+    const newRooms = rooms.map((item) => (item.stt === values.stt ? { ...values } : item))
+    setRooms(newRooms);
+    setfilteredRoom(newRooms);
   }
 
   useEffect(() => {
     const fetchAPI = async () => {
-      const result = await get("/staffs");
-      const newStaffs = result.data.staffs.map((item, index) => ({
+      const result = await get("/rooms");
+      const newRooms = result.data.rooms.map((item, index) => ({
         key: `${item._id}`,
         stt: `${index + 1}`,
-        staffCode: `${item.staffCode}`,
-        name: `${item.fullName}`,
-        sex: `${item.gender}`,
-        position: `${item.position}`,
-        birthday: `${(item.birthDate)}`
+        name: `${item.name}`,
+        type: `${item.type}`,
+        price: `${item.price}`,
+        description: `${item.description}`,
+        imageCover: `${item.imageCover}`,
       }))
       // console.log(newStaffs)
-      setStaff(newStaffs);
-      setFilteredStaff(newStaffs)
+      setRooms(newRooms);
+      setfilteredRoom(newRooms);
       // dataScoure = data
     }
     fetchAPI()
@@ -157,7 +152,7 @@ const StaffManagement = () => {
 
   return (
 
-    <>
+    <div>
       <div className="List__title" style={{
         textAlign: "center",
         fontSize: "32px",
@@ -166,10 +161,10 @@ const StaffManagement = () => {
         paddingBottom: "50px",
         position: "relative",
       }}>
-        Danh sách nhân viên
+        Danh sách phòng khách sạn
       </div>
 
-      <Search placeholder="Tìm kiếm nhân viên" onSearch={handleSearch}
+      <Search placeholder="Tìm kiếm khách hàng" onSearch={handleSearch}
         style={{
           width: 300,
           marginTop: 20,
@@ -179,15 +174,15 @@ const StaffManagement = () => {
         }}
       />
 
-      <ModalCreate
+      <ModalRoomCreate
         create={handleAdd}
-        length={staff.length}
+        length={rooms.length}
         // initdata={[]}
       />
 
       <Table className="staff-management-table" style={{
         marginLeft: 30,
-      }} columns={columns} dataSource={filteredStaff}
+      }} columns={columns} dataSource={filteredRoom}
         pagination={{
           position: [top, bottom],
         }}
@@ -207,10 +202,10 @@ const StaffManagement = () => {
         }}
 
       />
-    </>
+    </div>
   );
 };
 
 
 
-export default StaffManagement;
+export default RoomManagement;

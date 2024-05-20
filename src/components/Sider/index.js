@@ -2,7 +2,10 @@
 import "./sider.css"
 import Logo from "../../assets/images/gnb_logo_hotelsresorts.png"
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import { clearLogin } from "../../redux/actions/isUserLogin";
 
 const Sider = () => {
 
@@ -11,7 +14,24 @@ const Sider = () => {
     const handleOnclick = (page) =>{
         setPage(page)
     }
+    const login = useSelector(state => state.isUserLogin)
 
+    const dispathLogin = useDispatch();
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        Swal.fire({
+            icon: "question",
+            title: "Bạn muốn thoát ngay lúc này chứ ?",
+            text: "Dữ liệu quản lí sẽ không được lưu lại",
+            showConfirmButton: true,
+        }).then((swalResult) => {
+            if (swalResult.isConfirmed) { 
+                dispathLogin(clearLogin())
+                navigate("/")
+            }
+        });
+       
+    }
     return (
         <>
 
@@ -64,17 +84,33 @@ const Sider = () => {
                             Nhân viên
                         </div>
                     </Link>
-                    <div className="sider__item ">
-                        Khách hàng
-                    </div>
-                    <div className="sider__item ">
-                        Phòng
-                    </div>
-                    <div className="sider__item ">
-                        Dịch vụ
-                    </div>
-                    <div className="sider__item ">
-                        Hỗ trợ
+                    <Link to="/manager/client" onClick={() => handleOnclick(`client`)}>
+                        <div className={"sider__item" + ((activePage == 'client') ? ' activeSider' : '')} >
+                            Khách hàng
+                        </div>
+                    </Link>
+                    <Link to="/manager/rooms" onClick={() => handleOnclick(`rooms`)}>
+                        <div className={"sider__item" + ((activePage == 'rooms') ? ' activeSider' : '')} >
+                            Phòng
+                        </div>
+                    </Link>
+                    <Link to="/manager/services" onClick={() => handleOnclick(`services`)}>
+                        <div className={"sider__item" + ((activePage == 'services') ? ' activeSider' : '')} >
+                            Dịch vụ
+                        </div>
+                    </Link>
+                    <Link to="/manager/booking" onClick={() => handleOnclick(`bookings`)}>
+                        <div className={"sider__item" + ((activePage == 'bookings') ? ' activeSider' : '')} >
+                            Đặt phòng
+                        </div>
+                    </Link>
+                    <Link to="/" onClick={() => handleOnclick(`dashboard`)}>
+                        <div className={"sider__item"} >
+                            Về trang chủ
+                        </div>
+                    </Link>
+                    <div className="sider__item " onClick={handleLogout}>
+                        Đăng xuất
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import Password from "antd/es/input/Password";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../../redux/actions/isUserLogin";
 // import { post } from "../../utils/request";
 import Swal from "sweetalert2";
@@ -13,7 +13,6 @@ const Login = (props) => {
     const login = useSelector(state => state.isUserLogin)
     const dispathLogin = useDispatch();
     const navigate = useNavigate();
-
 
     const [fields, setFields] = useState(({
         email: ``,
@@ -37,9 +36,15 @@ const Login = (props) => {
                     title: "Đăng nhập thành công",
                     showConfirmButton: true,
                 }).then((swalResult) => {
-                    if (swalResult.isConfirmed) {
-                        navigate('/');
-                        dispathLogin(loginUser());
+                    if (swalResult.isConfirmed) { 
+                        dispathLogin(loginUser(result, result.token));
+                        // console.log(result.data.user.role)
+                        if(result.data.user.role === "user"){
+                            navigate('/');
+                        } else if (result.data.user.role === "admin"){
+                            navigate('/manager');
+                        }
+                        
                     }
                 });
             } else {
@@ -69,7 +74,6 @@ const Login = (props) => {
         e.preventDefault();
         postLogin()
     }
-
 
     return (
         <>
@@ -108,11 +112,23 @@ const Login = (props) => {
                     <div className="two-col">
                         <div className="one">
                             <input type="checkbox" id="login-check" />
-                            <label htmlFor="login-check">Ghi nhớ đăng nhập</label>
+                            <label htmlFor="login-check" style={{
+                                marginTop: "2px"
+                            }}>Ghi nhớ đăng nhập
+                            </label>
                         </div>
-                        <div className="two">
-                            <label><div href="#">Quên mật khẩu</div></label>
-                        </div>
+                        <Link to="/" style={{
+                            color: "#fff",
+                            fontSize: "15px",
+                            
+                        }}>
+                            <div className="two" style={{
+                                cursor: 'pointer'
+                            }}>
+                                <div href="#">Về trang chủ</div>
+                            </div>
+                        </Link>
+                        
                     </div>
                 </form>
             </div>

@@ -1,8 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Sider from "../../components/Sider";
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 const LayoutManager = () => {
+
+
+    const login = useSelector(state => state.isUserLogin)
+
+    // const dispathLogin = useDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(login.length === 0 && login.role !== 'admin'){
+            navigate('/')
+        }
+    },[])
+
     return (
         <>
         

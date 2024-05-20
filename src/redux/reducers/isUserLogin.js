@@ -1,23 +1,25 @@
-const isLogin = []
+import { eraseCookie, getCookie, setCookie } from "../../services/cookies";
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    console.log("Không có")
-    return null;
-}
+const isLogin = []
 
 
 export const isUserLogin = (state = isLogin, action) => {
     var newState = { ...state };
     switch (action.type) {
         case "LOGIN":
+            // console.log(action)
             newState = {
-                cookies: getCookie(`jwt`),
+                email: action.data.data.user.email,
+                name: action.data.data.user.name,
+                photo: action.data.data.user.photo,
+                role: action.data.data.user.role,
+                token: action.token,
             };
+            // setCookie("jwt",action.data.token,1)
+            // console.log(newState)
             return newState;
         case "CLEAR":
+            // eraseCookie("jwt")
             // console.log(newState)
             return []
         default:

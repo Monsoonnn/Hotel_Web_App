@@ -4,11 +4,13 @@ import "./login.css"
 import Register from "../../components/Register";
 import Login from "../../components/Login";
 import { Outlet } from "react-router-dom";
+import HeaderAll from "../../components/HeaderAll";
 const LoginPage = () => {
 
 
     return (
         <>
+
             <div className="wrapper">
                 <div className="form-box">
                     <Outlet/>

@@ -33,6 +33,10 @@ import LayoutManager from "../layout/LayoutManager";
 import StaffManagement from "../components/ManageListStaff";
 import GeneralManagerDashboard from "../components/GeneralManage";
 import BookingHistory from "../components/BookingHistory";
+import ClientManagement from "../components/ManageClient";
+import RoomManagement from "../components/ManageRooms";
+import ServicesManagement from "../components/ManageServices";
+import BookingManagement from "../components/ManagerBooking";
 // import Manage from "../pages/Manage";
 // import BookingHistory from "../components/HistoryAndReview";
 
@@ -92,7 +96,7 @@ export const routes = [
     element: <Error404 />
   },
   {
-    path: "member",
+    path: "/member",
     element: <LoginPage />,
     children: [
       {
@@ -120,10 +124,6 @@ export const routes = [
       {
         path: "account-info",
         element: <InfoForm />,
-      },
-      {
-        path: "account-social-links",
-        element: <SocialLinksForm />,
       },
       {
         path: "account-connections",
@@ -165,10 +165,22 @@ export const routes = [
         path: "staff",
         element: <StaffManagement/>
       },
-      // {  
-      //   path: "test",
-      //   element: <Manage/>
-      // },
+      {  
+        path: "client",
+        element: <ClientManagement/>
+      },
+      {  
+        path: "rooms",
+        element: <RoomManagement/>
+      },
+      {  
+        path: "services",
+        element: <ServicesManagement/>
+      },
+      {  
+        path: "booking",
+        element: <BookingManagement/>
+      },
     ],
   },
 ];

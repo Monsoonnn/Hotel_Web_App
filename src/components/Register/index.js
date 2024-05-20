@@ -34,16 +34,28 @@ const Register = (props) => {
                     <i className="bx bx-lock-alt"></i>
                 </div>
                 <div className="input-box">
+                    <input type="passwordConfirm" className="input-field" placeholder="Nhập lại mật khẩu" />
+                    <i className="bx bx-lock-alt"></i>
+                </div>
+                <div className="input-box">
                     <input type="submit" className="submit" value="Đăng ký" />
                 </div>
-                <div className="two-col">
+                <div className="two-col" style={{
+                    margin: "0px"
+                }}>
                     <div className="one">
                     </div>
-                    <div className="two">
-                        <label style={{
-                            cursor: "pointer"
-                        }}><div href="#">Terms & conditions</div></label>
-                    </div>
+                    <Link to="/" style={{
+                            color: "#fff",
+                            fontSize: "15px",
+                            marginRight: "10px"
+                        }}>
+                            <div className="two" style={{
+                                cursor: 'pointer'
+                            }}>
+                                <div href="#">Về trang chủ</div>
+                            </div>
+                    </Link>
                 </div>
             </div>
         </>

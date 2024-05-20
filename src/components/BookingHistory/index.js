@@ -9,7 +9,7 @@ let dataScoure = [
     {
         key: '1',
         stt: 1,
-        bookingcode: 'B383AA',
+        bookingCode: 'B383AA',
         bookingDate: '2024-05-19T11:11:06.455Z',
         totalPrice: 3616150,
         status: 'Đã thanh toán',
@@ -49,7 +49,7 @@ let dataScoure = [
     {
         key: '2',
         stt: 2,
-        bookingcode: 'B384BB',
+        bookingCode: 'B384BB',
         bookingDate: '2024-05-20T10:15:06.455Z',
         totalPrice: 2500000,
         status: 'Chưa thanh toán',
@@ -82,7 +82,7 @@ let dataScoure = [
     {
         key: '3',
         stt: 3,
-        bookingcode: 'B385CC',
+        bookingCode: 'B385CC',
         bookingDate: '2024-05-21T09:12:06.455Z',
         totalPrice: 4200000,
         status: 'Đã thanh toán',
@@ -122,7 +122,7 @@ let dataScoure = [
     {
         key: '4',
         stt: 4,
-        bookingcode: 'B386DD',
+        bookingCode: 'B386DD',
         bookingDate: '2024-05-22T08:11:06.455Z',
         totalPrice: 5200000,
         status: 'Đã thanh toán',
@@ -162,7 +162,7 @@ let dataScoure = [
     {
         key: '5',
         stt: 5,
-        bookingcode: 'B387EE',
+        bookingCode: 'B387EE',
         bookingDate: '2024-05-23T07:10:06.455Z',
         totalPrice: 3300000,
         status: 'Chưa thanh toán',
@@ -212,7 +212,7 @@ const columns = [
     },
     {
         title: 'Mã booking',
-        dataIndex: 'bookingcode',
+        dataIndex: 'bookingCode',
         key: 'bookingcode',
         width: '20%',  
     },
