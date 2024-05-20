@@ -30,7 +30,10 @@ import News from "../pages/News";
 import NewDetail from "../pages/News/Detail";
 import AboutUs from "../pages/AboutUs";
 import LayoutManager from "../layout/LayoutManager";
-import ManageStaff from "../components/ManageListStaff";
+import StaffManagement from "../components/ManageListStaff";
+import GeneralManagerDashboard from "../components/GeneralManage";
+// import Manage from "../pages/Manage";
+// import BookingHistory from "../components/HistoryAndReview";
 
 export const routes = [
   {
@@ -128,7 +131,11 @@ export const routes = [
       {
         path: "account-notifications",
         element: <NotificationsForm />,
-      }
+      },
+      // {
+      //   path: "history-booking",
+      //   element: <BookingHistory/>,
+      // }
     ],
   },
   {
@@ -151,8 +158,16 @@ export const routes = [
     children: [
       {  
         index: true,
-        element: <ManageStaff/>
+        element: <GeneralManagerDashboard/>
       },
+      {  
+        path: "staff",
+        element: <StaffManagement/>
+      },
+      // {  
+      //   path: "test",
+      //   element: <Manage/>
+      // },
     ],
   },
 ];

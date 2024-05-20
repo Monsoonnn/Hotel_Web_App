@@ -8,7 +8,8 @@ const LayoutManager = () => {
         
         <div className="manager" style={{
             display: "flex",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            height: "120vh"
         }}>
             <div className="left" style={{
                 width: "15%"
@@ -16,7 +17,8 @@ const LayoutManager = () => {
                 <Sider/>
             </div>
             <div className="right" style={{
-                width: "85%"
+                width: "85%",
+                position: "relative"
             }}>
                 <Outlet/>
             </div>

@@ -25,7 +25,6 @@ import Discovery from "../../assets/images/ld.jpg";
 const SlidePack = () => {
     return (
         <>
-            <Header></Header>
 
             <div className="hoteloffers">
                 <div className="container">
@@ -33,7 +32,7 @@ const SlidePack = () => {
                         <div className="hoteloffers__title col-xxl-12">
                             Gói Nghỉ Dưỡng & Ưu Đãi Phòng
                             <div className="aa" >
-                                Khám phá các khuyến mại phòng khách sạn đặc biệt chỉ có tại LOTTE HOTELS & RESORTS.
+                                Khám phá các khuyến mại phòng khách sạn đặc biệt.
                             </div>
                         </div>
                         <Swiper

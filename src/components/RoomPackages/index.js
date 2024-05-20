@@ -62,7 +62,7 @@ const RoomPackages = () => {
                                 Tìm phòng tại LOTTE HOTELS & RESORTS trên toàn thế giới với mức giá đặc biệt dành cho các thành viên
                             </div>
                             <button>
-                                <Link >
+                                <Link   >
                                     <span>
                                     ĐẶT DỊCH VỤ
                                     </span>

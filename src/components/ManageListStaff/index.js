@@ -1,184 +1,210 @@
-import React, { useState } from 'react';
-import './manageliststaff.css'
 
-// Component for updating staff information
-const UpdateStaffForm = ({ staff, onUpdate, onCancel }) => {
-  const [updatedStaff, setUpdatedStaff] = useState(staff);
+import React, { useEffect, useId, useState } from 'react';
+import { Table, Input, Button, Modal, Form, DatePicker, Select } from 'antd';
+import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUpdatedStaff({ ...updatedStaff, [name]: value });
+import FormItem from "antd/es/form/FormItem";
+import "./manageliststaff.css"
+import { TableToDateString } from '../../services/convert';
+import { get } from '../../utils/request';
+import moment from 'moment';
+import { isVisible } from '@testing-library/user-event/dist/utils';
+import ModalEdit from './ModalEdit';
+import Swal from 'sweetalert2';
+import ModalCreate from './ModalCreate';
+const { RangePicker } = DatePicker;
+
+const { Search } = Input;
+const { Option } = Select;
+
+const StaffManagement = () => {
+
+  const [staff, setStaff] = useState([]);
+  const [filteredStaff, setFilteredStaff] = useState(staff);
+  const [top, setTop] = useState('none');
+  const [bottom, setBottom] = useState('bottomCenter');
+  const id = useId();
+
+
+  const handleSearch = (value) => {
+    const filtered = staff.filter(s => s.name.toLowerCase().includes(value.toLowerCase()));
+    setFilteredStaff(filtered);
+  };
+  const handleAdd = (value) => {
+    const newStaffs = [
+      ...staff,
+      value
+    ]   
+    // console.log(newStaffs)
+    setStaff(newStaffs)
+    setFilteredStaff(newStaffs)
+  };
+  const columns = [
+    {
+      title: 'STT',
+      dataIndex: 'stt',
+      key: 'stt',
+    },
+    {
+      title: 'Mã nhân viên',
+      dataIndex: 'staffCode',
+      key: 'staffCode',
+    },
+    {
+      title: 'Họ tên',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Chức vụ',
+      dataIndex: 'position',
+      key: 'position',
+    },
+    {
+      title: 'Ngày sinh',
+      dataIndex: 'birthday',
+      key: 'birthday',
+      render: (text) => moment(text).format("DD/MM/YYYY")
+    },
+    {
+      title: 'Giới tính',
+      dataIndex: 'sex',
+      key: 'sex',
+    },
+    {
+      title: '',
+      key: 'action',
+      render: (_, record) => (
+        <>
+          <div className='action' style={{
+            display: 'flex'
+          }}>
+            <div className='edit' style={{
+              marginRight: "5px"
+            }}>
+              <ModalEdit
+                initialValues={record}
+                update={updateStaff}
+              />
+            </div>
+            <Button
+              icon={<DeleteOutlined />}
+              onClick={() => handleDelete(record.key)}
+              danger
+              style={{
+                width: "32px",
+                height: "32px",
+                margin: "0px"
+              }}
+            />
+          </div>
+        </>
+      ),
+    },
+  ];
+
+  const handleDelete = (key) => {
+    Swal.fire({
+      icon: "error",
+      title: "Bạn có chắc chắn muốn xóa không",
+      text: "Không thể khôi phục dữ liệu khi đã xóa ?",
+      showConfirmButton: true,
+      showDenyButton: true,
+    }).then((swalResult) => {
+      if (swalResult.isConfirmed) {
+        const newStaff = staff.filter(s => s.key !== key);
+        setStaff(newStaff);
+        setFilteredStaff(newStaff);
+      }
+    });
+    
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onUpdate(updatedStaff);
-  };
+  const updateStaff = (values) => {
+    // console.log(values)
+    const newStaff = staff.map((item) => (item.staffCode === values.staffCode ? { ...values } : item))
+    setStaff(newStaff);
+    setFilteredStaff(newStaff);
+  }
+
+  useEffect(() => {
+    const fetchAPI = async () => {
+      const result = await get("/staffs");
+      const newStaffs = result.data.staffs.map((item, index) => ({
+        key: `${item._id}`,
+        stt: `${index + 1}`,
+        staffCode: `${item.staffCode}`,
+        name: `${item.fullName}`,
+        sex: `${item.gender}`,
+        position: `${item.position}`,
+        birthday: `${(item.birthDate)}`
+      }))
+      // console.log(newStaffs)
+      setStaff(newStaffs);
+      setFilteredStaff(newStaffs)
+      // dataScoure = data
+    }
+    fetchAPI()
+  }, [])
+
+
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="code" value={updatedStaff.code} onChange={handleChange} />
-      <input type="text" name="name" value={updatedStaff.name} onChange={handleChange} />
-      <input type="text" name="position" value={updatedStaff.position} onChange={handleChange} />
-      <input type="date" name="birthday" value={updatedStaff.birthday} onChange={handleChange} />
-      <select name="sex" value={updatedStaff.sex} onChange={handleChange}>
-        <option value="Nam">Nam</option>
-        <option value="Nữ">Nữ</option>
-        <option value="Giới tính khác">Khác</option>
-      </select>
-      <button type="submit">Xác nhận</button>
-      <button type="button" onClick={onCancel}>Hủy</button>
-    </form>
-  );
-};
 
-// Main component for managing staff
-const ManageStaff = () => {
-  const [staffList, setStaffList] = useState([
-    { code: '001', name: 'Nguyễn Quang Anh', position: 'Nhân viên', birthday: '1990-05-15', sex: 'Nam' },
-    { code: '002', name: 'Nguyễn Thị Thanh', position: 'Kế toán', birthday: '1995-08-22', sex: 'Nữ' },
-
-  ]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isUpdating, setIsUpdating] = useState(false);
-  const [staffToUpdate, setStaffToUpdate] = useState(null);
-  const [newStaff, setNewStaff] = useState({ code: '', name: '', position: '', birthday: '', sex: '' });
-  const [isAdding, setIsAdding] = useState(false);
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const handleUpdate = (index, updatedStaff) => {
-    const updatedStaffList = [...staffList];
-    updatedStaffList[index] = updatedStaff;
-    setStaffList(updatedStaffList);
-    setIsUpdating(false);
-  };
-
-  const handleCancelUpdate = () => {
-    setIsUpdating(false);
-    setStaffToUpdate(null);
-  };
-
-  const handleDelete = (code) => {
-    setStaffList(staffList.filter(staff => staff.code !== code));
-  };
-
-  const handleAddStaff = () => {
-    setIsAdding(true);
-  };
-
-  const handleCancelAddStaff = () => {
-    setIsAdding(false);
-    setNewStaff({ code: '', name: '', position: '', birthday: '', sex: '' });
-  };
-
-  const handleSubmitAddStaff = () => {
-    setStaffList([...staffList, newStaff]);
-    setIsAdding(false);
-    setNewStaff({ code: '', name: '', position: '', birthday: '', sex: '' });
-  };
-
-  return (
     <div>
-      <div className="manageliststaff__title">
+      <div className="List__title" style={{
+        textAlign: "center",
+        fontSize: "32px",
+        fontWeight: "400",
+        padding: "30px 0px",
+        paddingBottom: "50px",
+        position: "relative",
+      }}>
         Danh sách nhân viên
       </div>
-      <input type="text" placeholder="Search..." value={searchQuery} onChange={handleSearch} />
-      <table>
-        <thead>
-          <tr>
-            <th>Mã nhân viên</th>
-            <th>Họ tên</th>
-            <th>Chức vụ</th>
-            <th>Sinh nhật</th>
-            <th>Giới tính</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {staffList
-            .filter((staff) =>
-              `${staff.code} ${staff.name} ${staff.position} ${staff.birthday} ${staff.sex}`
-                .toLowerCase()
-                .includes(searchQuery.toLowerCase())
-            )
-            .map((staff, index) => (
-              <tr key={index}>
-                <td>{staff.code}</td>
-                <td>{staff.name}</td>
-                <td>{staff.position}</td>
-                <td>{staff.birthday}</td>
-                <td>{staff.sex}</td>
-                <td>
-                  <button onClick={() => { setStaffToUpdate(staff); setIsUpdating(true); }}>Cập nhật</button>
-                  <button onClick={() => handleDelete(staff.code)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      <div>
-        {!isAdding ? (
-          <button onClick={handleAddStaff}>Thêm nhân viên mới</button>
-        ) : (
-          <div>
-            <div className="addstaff__title">
-              Thêm nhân viên
-            </div>
-            <form>
-              <input
-                type="text"
-                placeholder="Code"
-                value={newStaff.code}
-                onChange={(e) => setNewStaff({ ...newStaff, code: e.target.value })}
-              />
-              <input
-                type="text"
-                placeholder="Name"
-                value={newStaff.name}
-                onChange={(e) => setNewStaff({ ...newStaff, name: e.target.value })}
-              />
-              <input
-                type="text"
-                placeholder="Position"
-                value={newStaff.position}
-                onChange={(e) => setNewStaff({ ...newStaff, position: e.target.value })}
-              />
-              <input
-                type="date"
-                value={newStaff.birthday}
-                onChange={(e) => setNewStaff({ ...newStaff, birthday: e.target.value })}
-              />
-              <select
-                value={newStaff.sex}
-                onChange={(e) => setNewStaff({ ...newStaff, sex: e.target.value })}
-              >
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-                <option value="Giới tính khác">Khác</option>
-              </select>
-              <button type="button" onClick={handleSubmitAddStaff}>Thêm </button>
-              <button type="button" onClick={handleCancelAddStaff}>Hủy</button>
-            </form>
-          </div>
-        )}
-      </div>
-      {isUpdating && (
-        <div>
-          <div className="updatestaff__title">
-            Cập nhật nhân viên
-          </div>
-          <UpdateStaffForm
-            staff={staffToUpdate}
-            onUpdate={(updatedStaff) => handleUpdate(staffList.findIndex((s) => s.code === updatedStaff.code), updatedStaff)}
-            onCancel={handleCancelUpdate}
-          />
-        </div>
-      )}
+
+      <Search placeholder="Tìm kiếm nhân viên" onSearch={handleSearch}
+        style={{
+          width: 300,
+          marginTop: 20,
+          marginLeft: 30,
+          marginBottom: 20,
+          height: 45
+        }}
+      />
+
+      <ModalCreate
+        create={handleAdd}
+        length={staff.length}
+        // initdata={[]}
+      />
+
+      <Table className="staff-management-table" style={{
+        marginLeft: 30,
+      }} columns={columns} dataSource={filteredStaff}
+        pagination={{
+          position: [top, bottom],
+        }}
+        rowKey="id"
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: (event) => {
+              // console.log(record)
+            }, // click row
+            onDoubleClick: (event) => {
+
+            }, // double click row
+            onContextMenu: (event) => { }, // right button click row
+            onMouseEnter: (event) => { }, // mouse enter row
+            onMouseLeave: (event) => { }, // mouse leave row
+          };
+        }}
+
+      />
     </div>
   );
 };
 
-export default ManageStaff;
+
+
+export default StaffManagement;

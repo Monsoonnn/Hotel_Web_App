@@ -2,11 +2,15 @@
 import "./sider.css"
 import Logo from "../../assets/images/gnb_logo_hotelsresorts.png"
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 const Sider = () => {
 
     const [activePage, setPage] = useState("dashboard");
 
+    const handleOnclick = (page) =>{
+        setPage(page)
+    }
 
     return (
         <>
@@ -14,7 +18,7 @@ const Sider = () => {
             <div className="sider" style={{
                 backgroundColor: "#343A40",
                 color: "#fff",
-                height: "100vh"
+                height: "100%"
             }}>
                 <div className="sider__title" style={{
                     fontSize: "25px",
@@ -50,12 +54,16 @@ const Sider = () => {
                 </div>
 
                 <div className="sider__list ">
-                    <div className={"sider__item" + ((activePage == 'dashboard') ? ' activeSider' : '')}>
-                        Tổng quan
-                    </div>
-                    <div className="sider__item ">
-                        Nhân viên
-                    </div>
+                    <Link to="/manager" onClick={() => handleOnclick(`dashboard`)}>
+                        <div className={"sider__item" + ((activePage == 'dashboard') ? ' activeSider' : '')}>
+                            Tổng quan
+                        </div>
+                    </Link>
+                    <Link to="/manager/staff" onClick={() => handleOnclick(`staff`)}>
+                        <div className={"sider__item" + ((activePage == 'staff') ? ' activeSider' : '')}>
+                            Nhân viên
+                        </div>
+                    </Link>
                     <div className="sider__item ">
                         Khách hàng
                     </div>
